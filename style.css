@@ -1,0 +1,31 @@
+* { 
+  margin:0; 
+  padding:0; 
+  box-sizing:border-box; 
+  font-family: 'Montserrat', sans-serif;
+}
+
+.button {
+  outline: none;
+  color: #76ffff;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 7px 15px;
+  border: 1px solid #76ffff;
+  background: transparent;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 2px;
+}
+
+.button.fill {
+  color: #102027;
+  background: #76ffff;
+}
+
+.button.text {
+  color: #76ffff;
+  border: 1px transparent;
+}
+
