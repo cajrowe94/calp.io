@@ -8,7 +8,7 @@ $.inherits(component.input.check_box, component.input);
 
 component.input.check_box.prototype.decorate_contents = function(parent){
   var self = this;
-  this.checked_ = false;
+  this.checked = false;
   // container stuff
   var container = document.createElement('div');
   var height = '24px';
@@ -95,19 +95,24 @@ component.input.check_box.prototype.decorate_contents = function(parent){
   });
 
   container.addEventListener('click', function() {
-    self.checked_ = !self.checked_;
-    if (this.disabled) {
-      return;
-    }
+    self.checked = !self.checked;
 
     css.apply(label, {
-      'color': self.checked_ ? css.color('secondary') : css.color('white', '300'),
+      'color': self.checked ? css.color('secondary') : css.color('white', '300'),
     });
 
     css.apply(icon_cover, {
-      'background': self.checked_ ? 'transparent' : css.color('gray', '200'),
-      'border': '1px solid ' + (self.checked_ ? 'transparent' : css.color('gray', '100')),
+      'background': self.checked ? 'transparent' : css.color('gray', '200'),
+      'border': '1px solid ' + (self.checked ? 'transparent' : css.color('gray', '100')),
     });
+
+    if (
+      self.settings &&
+      self.settings.click &&
+      typeof self.settings.click === 'function'
+    ) {
+      self.settings.click();
+    }
   });
 
   container.appendChild(label);

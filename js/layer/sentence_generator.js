@@ -17,6 +17,9 @@ layer.sentence_generator.prototype.decorate = function(parent) {
 
   var letter_random = new component.input.check_box({
     'label': 'Random letter',
+    'click': function() {
+      console.log(letter_random.checked);
+    },
   });
 
   var word_length = new component.input.text({

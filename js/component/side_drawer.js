@@ -68,7 +68,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
     'left': this.get_side() === 'left' ? '-' + this.drawer_width_ + 'px' : null,
     'right': this.get_side() === 'right' ? '-' + this.drawer_width_ + 'px' : null,
     'transition': 'right .3s, left .3s',
-    'z-index': 11,
+    'z-index': 9999,
   });
 
   // build sections

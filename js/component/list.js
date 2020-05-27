@@ -23,10 +23,8 @@ component.list.prototype.decorate = function(parent) {
       'line-height': line_height,
       'cursor': 'pointer',
       'display': 'flex',
-      'padding': '10px 10px',
-      'transition': 'background .4s',
-      'margin': '0px 10px',
-      'border-radius': '5px',
+      'padding': '10px 20px',
+      'transition': 'background .3s',
     });
 
 
@@ -63,7 +61,7 @@ component.list.prototype.decorate = function(parent) {
     css.apply(text, {
       'display': 'block',
       'color': css.color('white', '300'),
-      'transition': 'color .4s',
+      'transition': 'color .3s',
     });
 
     container.appendChild(text);
