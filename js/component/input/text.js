@@ -7,8 +7,11 @@ component.input.text = function(){
 $.inherits(component.input.text, component.input);
 
 component.input.text.prototype.decorate_contents = function(parent){
+  var self = this;
   // container stuff
   var container = document.createElement('div');
+
+  console.log(this.settings);
 
   css.apply(container, {
     'display': 'flex',
@@ -68,6 +71,17 @@ component.input.text.prototype.decorate_contents = function(parent){
     css.apply(label, {
       'color': css.color('white', '300'),
     });
+  });
+
+  input.addEventListener('input', function() {
+    self.value = input.value;
+    if (
+      self.settings &&
+      self.settings.update &&
+      typeof self.settings.update === 'function'
+    ) {
+      self.settings.update();
+    }
   });
 
   if (this.disabled) {
