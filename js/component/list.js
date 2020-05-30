@@ -23,8 +23,12 @@ component.list.prototype.decorate = function(parent) {
       'line-height': line_height,
       'cursor': 'pointer',
       'display': 'flex',
-      'padding': '10px 20px',
-      'transition': 'background .3s',
+      'width': '95%',
+      'margin': '0 auto',
+      'padding': '10px',
+      'transition': 'background .3s, border .3s',
+      'border-radius': '0px 5px 5px 0px',
+      'border-left': '3px solid transparent',
     });
 
 
@@ -60,6 +64,7 @@ component.list.prototype.decorate = function(parent) {
 
     css.apply(text, {
       'display': 'block',
+      'font-size': '15px',
       'color': css.color('white', '300'),
       'transition': 'color .3s',
     });
@@ -71,20 +76,14 @@ component.list.prototype.decorate = function(parent) {
     container.addEventListener('mouseenter', function(){
       css.apply(container, {
         'background': css.color('secondary_focus'),
-      });
-
-      css.apply(text, {
-        'color': css.color('cyan', '100'),
+        'border-left': '3px solid ' + css.color('secondary'),
       });
     });
 
     container.addEventListener('mouseleave', function(){
       css.apply(container, {
         'background': css.color('gray', '200'),
-      });
-
-      css.apply(text, {
-        'color': css.color('white', '300'),
+        'border-left': '3px solid transparent',
       });
     });
 

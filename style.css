@@ -9,14 +9,12 @@
   outline: none;
   color: #76ffff;
   font-size: 13px;
-  text-transform: uppercase;
-  font-weight: bold;
   padding: 10px 15px;
   border: 1px solid #76ffff;
   background: transparent;
   cursor: pointer;
   margin: 5px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .button.fill {
