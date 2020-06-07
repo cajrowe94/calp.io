@@ -54,7 +54,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['concat', 'uglify', 'watch']);
 
   // prod concats and minimizes, no watching
-  // todo prod will need to delete concat.js
+  // todo prod needs to delete concat.js
   // also will need to somehow switch which js file my index.html calls
   grunt.registerTask('prod', ['concat', 'uglify']);
 }
