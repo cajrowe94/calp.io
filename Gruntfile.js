@@ -1,4 +1,9 @@
 module.exports = function(grunt) {
+  // load plugins
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+
   // project config
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -10,8 +15,7 @@ module.exports = function(grunt) {
         'js/*.js',
         'js/**/*.js',
         'js/**/**/*.js',
-      ],
-      tasks: ['concat', 'uglify']
+      ]
     },
     concat: {
       dist: {
@@ -41,11 +45,16 @@ module.exports = function(grunt) {
     },
   });
 
-  // load plugins
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  // tasks for dev, production, and default
+  // default, just concats
+  grunt.registerTask('default', ['concat']);
 
-  grunt.registerTask('default', ['concat', 'uglify']);
-  grunt.registerTask('production', ['concat', 'uglify']);
+  // grunt dev doesnt minimize, just concat and watch
+  // todo
+  grunt.registerTask('dev', ['concat', 'uglify', 'watch']);
+
+  // prod concats and minimizes, no watching
+  // todo prod will need to delete concat.js
+  // also will need to somehow switch which js file my index.html calls
+  grunt.registerTask('prod', ['concat', 'uglify']);
 }
