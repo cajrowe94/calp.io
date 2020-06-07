@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  // load plugins 
+  // load plugins
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
