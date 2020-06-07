@@ -1,3 +1,4 @@
+// global vars
 var $ = rocket.extend(rocket.$, rocket);
 var css = new css();
 var forge = new forge();
