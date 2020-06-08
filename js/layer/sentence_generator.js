@@ -7,7 +7,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   var self = this;
   this.inputs_ = {};
   var paper = new component.paper({
-    'title': 'Sentence generator - test',
+    'title': 'Sentence generator',
     'header': 'Type a letter and length to use, or check random for either',
   });
 
