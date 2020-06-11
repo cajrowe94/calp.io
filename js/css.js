@@ -34,7 +34,7 @@ css.prototype.color = function(color, opt_shade){
     'secondary_focus': 'rgba(0, 227, 227, 0.1)',
     'gray': {
       '100': '#484848',
-      '200': '#1c1c1c',
+      '200': '#212121',
       '300': '#0f0f0f',
     },
     'black': {

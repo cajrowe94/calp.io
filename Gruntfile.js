@@ -15,7 +15,8 @@ module.exports = function(grunt) {
         'js/*.js',
         'js/**/*.js',
         'js/**/**/*.js',
-      ]
+      ],
+      tasks: ['concat', 'uglify']
     },
     concat: {
       dist: {
