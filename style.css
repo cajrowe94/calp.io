@@ -5,6 +5,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+h1 {
+  font-size: 42px;
+}
+
 .button {
   outline: none;
   color: #76ffff;
@@ -15,6 +19,7 @@
   cursor: pointer;
   margin: 5px;
   border-radius: 3px;
+  text-transform: uppercase;
 }
 
 .button.fill {

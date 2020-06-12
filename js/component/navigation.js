@@ -23,6 +23,7 @@ component.navigation.prototype.decorate = function(parent) {
     'left': '10px',
     'cursor': 'pointer',
   });
+
   container.appendChild(menu_icon);
 
   menu_icon.addEventListener('click', function(){
@@ -39,7 +40,21 @@ component.navigation.prototype.decorate = function(parent) {
     'width': '100%',
     'line-height': '75px',
     'z-index': 10,
+    'border-radius': '0px 0px 10px 10px',
   });
+
+  var title = document.createElement('h1');
+  title.innerText = 'calp.io';
+
+  css.apply(title, {
+    'position': 'absolute',
+    'right': '0px',
+    'height': '60px',
+    'line-height': '55px',
+    'color': css.color('gray', '300'),
+  });
+
+  container.appendChild(title);
 
   parent.appendChild(container);
   nav_drawer.render(drawer_container);

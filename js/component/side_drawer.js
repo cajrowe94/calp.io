@@ -34,7 +34,23 @@ component.side_drawer.prototype.decorate = function(parent) {
     'left': this.get_side() === 'right' ? '10px' : null,
     'right': this.get_side() === 'left' ? '10px' : null,
     'cursor': 'pointer',
+    'border-radius': '50%',
+    'background': 'transparent',
+    'padding': '3px',
+    'transition': 'background .3s', 
   });
+
+  close_icon.addEventListener('mouseover', function() {
+    css.apply(close_icon, {
+      'background': css.color('secondary_focus'),
+    })
+  });
+
+   close_icon.addEventListener('mouseleave', function() {
+    css.apply(close_icon, {
+      'background': 'transparent',
+    })
+  })
 
   close_icon.addEventListener('click', function(){
     self.hide();
@@ -64,6 +80,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
     'display': 'flex',
     'flex-direction': 'column',
     'position': 'fixed',
+    'border-radius': '0px 10px 10px 0px',
     'top': '0px',
     'left': this.get_side() === 'left' ? '-' + this.drawer_width_ + 'px' : null,
     'right': this.get_side() === 'right' ? '-' + this.drawer_width_ + 'px' : null,
