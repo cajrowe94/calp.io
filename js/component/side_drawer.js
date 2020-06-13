@@ -181,7 +181,7 @@ component.side_drawer.prototype.show = function() {
     css.apply(this.main_container_, {
       'left': this.get_side() === 'left' ? '0px' : null,
       'right': this.get_side() === 'right' ? '0px' : null,
-      'box-shadow': '0px 2px 12px black',
+      'box-shadow': '0px 2px 15px ' + css.color('gray', '300'),
     });
 
     // show overlay
