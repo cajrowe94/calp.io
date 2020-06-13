@@ -14,6 +14,7 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
 };
 
 component.side_drawer.navigation.prototype.decorate_body = function(parent){
+  var self = this;
   var nav_list = new component.list();
 
   var list_contents = [
@@ -21,6 +22,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'name': 'Projects',
       'icon': 'memory',
       'action': (function() {
+        self.hide();
         new layer.projects().render();
       }),
     },
@@ -28,6 +30,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'name': 'Blog',
       'icon': 'dashboard',
       'action': (function() {
+        self.hide();
         new layer.blog().render();
       }),
     },
@@ -35,6 +38,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'name': 'About',
       'icon': 'person',
       'action': (function() {
+        self.hide();
         new layer.about().render();
       }),
     },
@@ -42,6 +46,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'name': 'Sentence Generator',
       'icon': 'message',
       'action': (function() {
+        self.hide();
         new layer.sentence_generator().render();
       }),
     },

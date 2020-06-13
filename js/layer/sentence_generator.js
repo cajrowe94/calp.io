@@ -53,7 +53,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   // submit button
   var submit_button = forge.make('button', {
     'name': 'Generate',
-    'type': 'fill',
+    'type': 'text',
   });
   container.appendChild(submit_button);
 

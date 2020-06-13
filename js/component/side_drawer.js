@@ -20,6 +20,28 @@ component.side_drawer.prototype.decorate = function(parent) {
    * Each needs overriden
    */
 
+  // container for overlay
+  this.close_container_ = document.createElement('div');
+
+  css.apply(this.close_container_, {
+    'position': 'absolute',
+    'top': '0px',
+    'left': '0px',
+    'width': '100vw',
+    'height': '100vh',
+    'z-index': '2000',
+    'background': css.color('secondary_focus'),
+    'transition': 'visibility 0s, opacity .2s ease-in-out',
+    'opacity': '0',
+    'visibility': 'hidden',
+  });
+
+  this.close_container_.addEventListener('click', function() {
+    self.hide();
+  });
+
+  parent.appendChild(this.close_container_);
+
   var main_container = document.createElement('div');
 
   // add close button
@@ -37,20 +59,20 @@ component.side_drawer.prototype.decorate = function(parent) {
     'border-radius': '50%',
     'background': 'transparent',
     'padding': '3px',
-    'transition': 'background .3s', 
+    'transition': 'background .3s',
   });
 
   close_icon.addEventListener('mouseover', function() {
     css.apply(close_icon, {
       'background': css.color('secondary_focus'),
-    })
+    });
   });
 
-   close_icon.addEventListener('mouseleave', function() {
+  close_icon.addEventListener('mouseleave', function() {
     css.apply(close_icon, {
       'background': 'transparent',
-    })
-  })
+    });
+  });
 
   close_icon.addEventListener('click', function(){
     self.hide();
@@ -90,6 +112,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
 
   // build sections
   var header_container = document.createElement('div');
+  header_container.setAttribute('data-nav', true);
 
   css.apply(header_container, {
     'flex': '0 1 20%',
@@ -100,6 +123,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
   container.appendChild(header_container);
 
   var body_container = document.createElement('div');
+  body_container.setAttribute('data-nav', true);
 
   css.apply(body_container, {
     'flex': '1 1 auto',
@@ -109,6 +133,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
   container.appendChild(body_container);
 
   var footer_container = document.createElement('div');
+  footer_container.setAttribute('data-nav', true);
 
   css.apply(footer_container, {
     'flex': '0 1 15%',
@@ -158,7 +183,14 @@ component.side_drawer.prototype.show = function() {
       'right': this.get_side() === 'right' ? '0px' : null,
       'box-shadow': '0px 2px 12px black',
     });
+
+    // show overlay
+    css.apply(this.close_container_, {
+      'visibility': 'visible',
+      'opacity': '100',
+    });
   }
+
   this.hidden_ = false;
 };
 
@@ -169,6 +201,13 @@ component.side_drawer.prototype.hide = function() {
       'right': this.get_side() === 'right' ? '-' + this.drawer_width_ + 'px' : null,
       'box-shadow': 'none',
     });
+
+    // hide overlay
+    css.apply(this.close_container_, {
+      'opacity': '0',
+      'visibility': 'hidden',
+    });
   }
+
   this.hidden_ = true;
 };

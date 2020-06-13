@@ -11,29 +11,12 @@
   },
 
   "globals": {
+    "$": true,
     "css": true,
     "forge": true,
-
-    # achilles
-    "api": true,
-    "cache": true,
     "component": true,
-    "envoy": true,
-    "exception": true,
     "layer": true,
-
-    # submodules & "internal libraries"
-    "$": true,
-    "jex": true,
     "rocket": true,
-
-    # lib folder globals
-    "google": true, # google maps
-    "Highcharts": true,
-    "moment": true,
-    "Quill": true, # memos
-    "UAParser": true,
-    "Twilio": true,
   },
 
   # these only change each major release

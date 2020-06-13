@@ -22,7 +22,5 @@
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0"
   },
-  "dependencies": {
-    "eslint": "^7.2.0"
-  }
+  "dependencies": {}
 }
