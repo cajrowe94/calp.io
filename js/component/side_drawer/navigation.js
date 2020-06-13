@@ -10,7 +10,28 @@ $.inherits(component.side_drawer.navigation, component.side_drawer);
  */
 
 component.side_drawer.navigation.prototype.decorate_header = function(parent){
-  // todo
+  var container = document.createElement('div');
+
+  css.apply(container, {
+    'padding': '0px 10px',
+  });
+
+  // main title
+  var title = document.createElement('h2');
+  title.innerText = 'calp.io';
+
+  css.apply(title, {
+    'text-decoration': 'underline',
+  });
+
+  // subtitle
+  var sub_title = document.createElement('p');
+  sub_title.innerText = 'by Caleb Rowe';
+
+  container.appendChild(title);
+  container.appendChild(sub_title);
+
+  parent.appendChild(container);
 };
 
 component.side_drawer.navigation.prototype.decorate_body = function(parent){

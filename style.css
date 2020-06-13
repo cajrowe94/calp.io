@@ -3,17 +3,29 @@
   padding:0; 
   box-sizing:border-box; 
   font-family: 'Montserrat', sans-serif;
+  color: #e1e1e1;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 48px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 200;
 }
 
 .button {
   outline: none;
   color: #76ffff;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 400;
   padding: 10px 15px;
   border: 1px solid #76ffff;
   background: transparent;

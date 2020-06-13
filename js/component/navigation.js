@@ -48,10 +48,10 @@ component.navigation.prototype.decorate = function(parent) {
 
   css.apply(title, {
     'position': 'absolute',
-    'right': '0px',
+    'right': '5px',
     'height': '60px',
     'line-height': '55px',
-    'color': css.color('gray', '300'),
+    'color': 'rgba(225, 225, 225, 0.1)',
   });
 
   container.appendChild(title);

@@ -32,8 +32,6 @@ component.paper.prototype.decorate_title_ = function(parent){
 
     css.apply(title_element, {
       'padding': '10px 5px',
-      'color': css.color('white', '300'),
-      'font-weight': '100',
     });
 
     parent.appendChild(title_element);
