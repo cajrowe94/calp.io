@@ -10,6 +10,7 @@ $.inherits(component.side_drawer.navigation, component.side_drawer);
  */
 
 component.side_drawer.navigation.prototype.decorate_header = function(parent){
+  var self = this;
   var container = document.createElement('div');
 
   css.apply(container, {
@@ -17,10 +18,19 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   });
 
   // main title
+  var anchor = document.createElement('a');
+  anchor.classList.add('link');
+
+  anchor.addEventListener('click', function() {
+    new layer.home().render();
+    self.hide();
+  });
+
   var title = document.createElement('h2');
   title.innerText = 'calp.io';
 
   css.apply(title, {
+    'width': 'fit-content',
     'text-decoration': 'underline',
   });
 
@@ -28,7 +38,8 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   var sub_title = document.createElement('p');
   sub_title.innerText = 'by Caleb Rowe';
 
-  container.appendChild(title);
+  anchor.appendChild(title);
+  container.appendChild(anchor);
   container.appendChild(sub_title);
 
   parent.appendChild(container);

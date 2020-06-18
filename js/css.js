@@ -92,3 +92,7 @@ css.prototype.get_theme = function(theme){
   return theme_palettes[theme];
 };
 
+css.prototype.is_mobile = function(){
+  return (screen.width <= 500);
+};
+

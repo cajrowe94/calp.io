@@ -15,8 +15,7 @@ component.list.prototype.decorate = function(parent) {
 
   list.forEach(function(list_item) {
     var container = document.createElement('div');
-    var height = '30px';
-    var line_height = '33px';
+    var line_height = '23px';
 
     css.apply(container, {
       'height': 'auto',

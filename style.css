@@ -46,3 +46,11 @@ h3 {
   border: 1px transparent;
 }
 
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
