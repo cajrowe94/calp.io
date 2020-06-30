@@ -1,6 +1,7 @@
 
-component.tile = function(){
+component.tile = function(args){
   component.apply(this, arguments);
+  this.options_ = args;
 };
 $.inherits(component.tile, component);
 
