@@ -59,7 +59,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   container.appendChild(submit_button);
 
   submit_button.addEventListener('click', function() {
-    console.log(self.inputs_);
+    self.state.foo = 123;
   });
 
   paper.render(parent);

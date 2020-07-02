@@ -1,4 +1,7 @@
-var component = function() {};
+var component = function() {
+  layer.apply(this, arguments);
+};
+$.inherits(component, layer);
 
 component.prototype.render = function(parent) {
   if (

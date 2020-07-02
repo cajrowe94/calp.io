@@ -12,7 +12,10 @@ layer.home.prototype.decorate = function(parent) {
     'padding': '50px 20px',
   });
 
-  var tile = new component.tile();
+  var tile = new component.tile({
+    'title': 'Projects',
+    'icon': 'memory',
+  });
 
   tile.render(container);
 

@@ -1,6 +1,10 @@
 var layer = function(){};
 
+// shared state object across layers
+layer.prototype.state = {};
+
 layer.prototype.render = function(opt_parent){
+  console.log(this.state);
   var root = document.getElementsByTagName('main')[0];
 
   // clear and add new class
@@ -26,9 +30,6 @@ layer.prototype.render = function(opt_parent){
     });
     this.decorate(root);
   }
-
-  // clear state for each layer
-  this.state = {};
 };
 
 layer.prototype.decorate = function(parent) {
