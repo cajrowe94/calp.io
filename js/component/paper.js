@@ -55,7 +55,7 @@ component.paper.prototype.decorate_header_ = function(parent){
 
 component.paper.prototype.apply_paper_styles_ = function(container){
   css.apply(container, {
-    'background': css.color('gray', '200'),
+    'background': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'min-height': '100px',
     'padding': '20px',

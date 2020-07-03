@@ -12,12 +12,41 @@ layer.home.prototype.decorate = function(parent) {
     'padding': '50px 20px',
   });
 
-  var tile = new component.tile({
+  var projects_tile = new component.tile({
     'title': 'Projects',
     'icon': 'memory',
+    'text': 'Collection of all my projects I have done through the years.' +
+      ' It mostly consists of web development projects and electronics.',
+    'click': function() {
+      new layer.projects().render();
+    },
   });
 
-  tile.render(container);
+  projects_tile.render(container);
+
+  var blog_tile = new component.tile({
+    'title': 'Blog',
+    'icon': 'dashboard',
+    'text': 'Collection of all my projects I have done through the years.' +
+      ' It mostly consists of web development projects and electronics.',
+    'click': function() {
+      new layer.blog().render();
+    },
+  });
+
+  blog_tile.render(container);
+
+  var about_tile = new component.tile({
+    'title': 'About',
+    'icon': 'person',
+    'text': 'Collection of all my projects I have done through the years.' +
+      ' It mostly consists of web development projects and electronics.',
+    'click': function() {
+      new layer.about().render();
+    },
+  });
+
+  about_tile.render(container);
 
   parent.appendChild(container);
 };

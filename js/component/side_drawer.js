@@ -34,6 +34,7 @@ component.side_drawer.prototype.decorate = function(parent) {
     'transition': 'visibility 0s, opacity .2s ease-in-out',
     'opacity': '0',
     'visibility': 'hidden',
+    'backdrop-filter': 'blur(7px)',
   });
 
   this.close_container_.addEventListener('click', function() {
@@ -98,7 +99,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
   css.apply(container, {
     'height': '100%',
     'width': this.drawer_width_ + 'px',
-    'background': css.color('gray', '200'),
+    'background': css.color('background_secondary'),
     'display': 'flex',
     'flex-direction': 'column',
     'position': 'fixed',

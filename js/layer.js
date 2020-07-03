@@ -23,7 +23,7 @@ layer.prototype.render = function(opt_parent){
     root.innerHTML = '';
 
     css.apply(root, {
-      'background-color': css.color('primary'),
+      'background-color': css.color('background'),
       'height': '100vh',
       'width': '100%',
       'padding': '60px 20px 0px 20px',

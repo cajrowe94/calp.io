@@ -30,6 +30,8 @@ css.prototype.color = function(color, opt_shade){
    */
   var colors = {
     'primary': theme.primary,
+    'background': theme.background,
+    'background_secondary': theme.background_secondary,
     'secondary': theme.secondary,
     'secondary_focus': 'rgba(0, 227, 227, 0.1)',
     'gray': {
@@ -78,6 +80,9 @@ css.prototype.get_theme = function(theme){
     'dark': {
       'primary': '#121212',
       'secondary': '#18ffff',
+      'background': '#121212',
+      'background_alpha': 'rgba(18, 18, 18, 0.5)',
+      'background_secondary': '#212121',
     },
     'forest': {
       'primary': '#363030',
