@@ -44,6 +44,7 @@ component.side_drawer.prototype.decorate = function(parent) {
   parent.appendChild(this.close_container_);
 
   var main_container = document.createElement('div');
+  this.set_class(main_container);
 
   // add close button
   var close_icon = forge.make('icon', {
@@ -211,4 +212,8 @@ component.side_drawer.prototype.hide = function() {
   }
 
   this.hidden_ = true;
+};
+
+component.side_drawer.prototype.get_class = function() {
+  return ['component', 'side_drawer'];
 };

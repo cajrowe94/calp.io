@@ -69,7 +69,7 @@ component.tile.prototype.decorate = function(parent) {
     });
 
     css.apply(icon, {
-      'height': '100%',
+      'min-height': '80%',
       'width': 'auto',
       'z-index': '10',
     });
@@ -87,7 +87,7 @@ component.tile.prototype.decorate = function(parent) {
     text.innerText = this.options_.text;
 
     css.apply(text, {
-      'width': '70%',
+      // 'min-width': '50%',
       'padding': '18px 10px 10px 10px',
     });
 
@@ -128,4 +128,8 @@ component.tile.prototype.set_click_event_ = function(container) {
   ) {
     container.addEventListener('click', this.options_.click);
   }
+};
+
+component.tile.prototype.set_click_event_ = function() {
+  return ['component', 'tile'];
 };

@@ -8,13 +8,6 @@ component.prototype.render = function(parent) {
     parent &&
     parent.nodeType
   ){
-    // clear and add new class
-    parent.removeAttribute('class');
-
-    this.get_class().forEach(function(class_name){
-      parent.classList.add(class_name);
-    });
-
     this.decorate(parent);
   } else { // otherwise append to the document body
     console.error('no parent was specified');

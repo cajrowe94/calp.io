@@ -1,18 +1,11 @@
 var layer = function(){};
 
-// shared state object across layers
+// shared state object across layers + components
 layer.prototype.state = {};
 
 layer.prototype.render = function(opt_parent){
-  console.log(this.state);
   var root = document.getElementsByTagName('main')[0];
-
-  // clear and add new class
-  root.removeAttribute('class');
-
-  this.get_class().forEach(function(class_name){
-    root.classList.add(class_name);
-  });
+  this.set_class(root);
 
   if (
     opt_parent &&
@@ -27,6 +20,9 @@ layer.prototype.render = function(opt_parent){
       'height': '100vh',
       'width': '100%',
       'padding': '60px 20px 0px 20px',
+      'overflow-y': 'scroll',
+      'scrollbar-width': 'none',
+      '-ms-overflow-style': 'none',
     });
     this.decorate(root);
   }
@@ -38,4 +34,13 @@ layer.prototype.decorate = function(parent) {
 
 layer.prototype.get_class = function() {
   return ['layer'];
+};
+
+layer.prototype.set_class = function(container) {
+  // clear and add new class
+  container.removeAttribute('class');
+
+  this.get_class().forEach(function(class_name){
+    container.classList.add(class_name);
+  });
 };

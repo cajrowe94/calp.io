@@ -39,7 +39,7 @@ component.navigation.prototype.decorate = function(parent) {
     'height': '60px',
     'width': '100%',
     'line-height': '75px',
-    'z-index': 10,
+    'z-index': '200',
     'border-radius': '0px 0px 10px 10px',
   });
 

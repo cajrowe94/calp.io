@@ -91,3 +91,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
 component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   // todo
 };
+
+component.side_drawer.navigation.prototype.get_class = function() {
+  return ['component', 'side_drawer', 'navigation'];
+};
