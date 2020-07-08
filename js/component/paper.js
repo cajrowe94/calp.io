@@ -59,7 +59,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'min-height': '100px',
     'padding': '20px',
-    'border-radius': '5px',
+    'border-radius': '20px',
   });
 };
 

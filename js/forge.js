@@ -7,16 +7,16 @@
 
 var forge = function() {};
 
-forge.prototype.make = function(element, element_type) {
+forge.prototype.make = function(element_type, args) {
   var forgery = null;
 
   if (
-    element &&
-    typeof element === 'string' &&
     element_type &&
-    typeof element_type === 'object'
+    typeof element_type === 'string' &&
+    args &&
+    typeof args === 'object'
   ) {
-    forgery = this['get_' + element + '_'](element_type);
+    forgery = this['get_' + element_type + '_'](args);
   }
 
   return forgery;
@@ -57,6 +57,26 @@ forge.prototype.get_icon_ = function(icon_args) {
     console.error('No icon name was given');
     return;
   }
-  
+
   return icon;
+};
+
+/**
+ * Returns a random blob svg
+ */
+forge.prototype.get_blob_ = function(blob_args) {
+  var blob = document.createElement('img');
+
+  // credit: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+  var random_num = function(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  blob.classList.add('blob');
+  blob.setAttribute('src', 'img/blobs/' + 'blob_' + random_num(1, 3) + '.svg');
+
+
+  return blob;
 };

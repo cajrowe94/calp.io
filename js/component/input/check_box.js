@@ -48,7 +48,7 @@ component.input.check_box.prototype.decorate_contents = function(parent){
     'left': '0px',
     'height': height,
     'width': height,
-    'background': css.color('gray', '200'),
+    'background': css.color('background_secondary'),
     'border-radius': '4px',
     'border': '1px solid ' + css.color('gray', '100'),
     'transition': 'background .3s, border .3s',
@@ -73,6 +73,7 @@ component.input.check_box.prototype.decorate_contents = function(parent){
 
   css.apply(label, {
     'color': this.disabled ? css.color('gray', '100') : css.color('white', '300'),
+    'cursor': 'pointer',
     'font-size': '15px',
     'outline': 'none',
     'margin': '0 auto',
@@ -102,7 +103,7 @@ component.input.check_box.prototype.decorate_contents = function(parent){
     });
 
     css.apply(icon_cover, {
-      'background': self.checked ? 'transparent' : css.color('gray', '200'),
+      'background': self.checked ? 'transparent' : css.color('background_secondary'),
       'border': '1px solid ' + (self.checked ? 'transparent' : css.color('gray', '100')),
     });
 

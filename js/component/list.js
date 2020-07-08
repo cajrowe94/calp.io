@@ -64,7 +64,7 @@ component.list.prototype.decorate = function(parent) {
     css.apply(text, {
       'display': 'block',
       'font-size': '15px',
-      'color': css.color('white', '300'),
+      // 'color': css.color('white', '300'),
       'transition': 'color .3s',
     });
 
@@ -81,7 +81,7 @@ component.list.prototype.decorate = function(parent) {
 
     container.addEventListener('mouseleave', function(){
       css.apply(container, {
-        'background': css.color('gray', '200'),
+        'background': css.color('background_secondary'),
         'border-left': '3px solid transparent',
       });
     });

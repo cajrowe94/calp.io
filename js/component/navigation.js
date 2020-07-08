@@ -17,7 +17,7 @@ component.navigation.prototype.decorate = function(parent) {
   });
 
   css.apply(menu_icon, {
-    'height': '60px',
+    'height': '50px',
     'position': 'absolute',
     'top': '0',
     'left': '10px',
@@ -36,7 +36,7 @@ component.navigation.prototype.decorate = function(parent) {
     'left': '0',
     'backgroundColor': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.3)',
-    'height': '60px',
+    'height': '50px',
     'width': '100%',
     'line-height': '75px',
     'z-index': '200',
@@ -49,8 +49,8 @@ component.navigation.prototype.decorate = function(parent) {
   css.apply(title, {
     'position': 'absolute',
     'right': '5px',
-    'height': '60px',
-    'line-height': '55px',
+    'height': '50px',
+    'line-height': '43px',
     'color': 'rgba(225, 225, 225, 0.1)',
   });
 

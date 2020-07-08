@@ -17,7 +17,7 @@ component.tile.prototype.decorate = function(parent) {
     'max-width': '400px',
     'background': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
-    'border-radius': '5px',
+    'border-radius': '10px',
     'cursor': 'pointer',
     'z-index': '10',
     'position': 'relative',
@@ -31,30 +31,33 @@ component.tile.prototype.decorate = function(parent) {
   // hover sliding effects
   main_container.addEventListener('mouseover', function() {
     css.apply(sleeve_container, {
-      'width': '1%',
+      'opacity': '0',
     });
   });
 
   main_container.addEventListener('mouseleave', function() {
     css.apply(sleeve_container, {
-      'width': '85%',
+      'opacity': '100',
     });
   });
 
   css.apply(sleeve_container, {
     'z-index': '11',
     'height': '100%',
-    'border-radius': '0px 5px 5px 0px',
-    'width': '85%',
+    'border-radius': '0px 10px 10px 0px',
+    'width': '100%',
     'top': '0',
     'right': '0',
+    'display': 'flex',
     'line-height': height,
     'position': 'absolute',
-    'transition': 'width .4s ease-in-out',
+    'transition': 'opacity .2s ease-in-out',
     'transition-delay': '.1s',
     'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
     'background': css.color('secondary_focus'),
     'backdrop-filter': 'blur(7px)',
+    'border-left': '5px solid ' + css.color('secondary'),
+    'opacity': '100',
   });
 
   main_container.appendChild(sleeve_container);
@@ -64,17 +67,30 @@ component.tile.prototype.decorate = function(parent) {
     this.options_ &&
     this.options_.icon
   ) {
-    var icon = forge.make('icon', {
+    var icon_sleeve = forge.make('icon', {
       'file_name': this.options_.icon,
     });
 
-    css.apply(icon, {
-      'min-height': '80%',
+    css.apply(icon_sleeve, {
+      'min-height': '40%',
       'width': 'auto',
       'z-index': '10',
+      'padding-left': '10px',
     });
 
-    main_container.appendChild(icon);
+    var icon_main = forge.make('icon', {
+      'file_name': this.options_.icon,
+    });
+
+    css.apply(icon_main, {
+      'height': '35px',
+      'position': 'absolute',
+      'bottom': '5px',
+      'right': '5px',
+    });
+
+    sleeve_container.appendChild(icon_sleeve);
+    main_container.appendChild(icon_main);
   }
 
   // add an icon if passed in
@@ -87,7 +103,8 @@ component.tile.prototype.decorate = function(parent) {
     text.innerText = this.options_.text;
 
     css.apply(text, {
-      // 'min-width': '50%',
+      'margin': '10px 5px',
+      'border-left': '2px solid ' + css.color('secondary'),
       'padding': '18px 10px 10px 10px',
     });
 
@@ -104,9 +121,8 @@ component.tile.prototype.decorate = function(parent) {
     title.innerText = this.options_.title;
 
     css.apply(title, {
-      'padding-left': '30px',
+      'padding-left': '10px',
       'overflow': 'hidden',
-      'border-left': '5px solid ' + css.color('secondary'),
     });
 
     sleeve_container.appendChild(title);
@@ -130,6 +146,6 @@ component.tile.prototype.set_click_event_ = function(container) {
   }
 };
 
-component.tile.prototype.set_click_event_ = function() {
+component.tile.prototype.get_class = function() {
   return ['component', 'tile'];
 };

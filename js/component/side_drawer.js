@@ -30,11 +30,10 @@ component.side_drawer.prototype.decorate = function(parent) {
     'width': '100vw',
     'height': '100vh',
     'z-index': '2000',
-    'background': css.color('secondary_focus'),
+    'background': css.color('background_alpha'),
     'transition': 'visibility 0s, opacity .2s ease-in-out',
     'opacity': '0',
     'visibility': 'hidden',
-    'backdrop-filter': 'blur(7px)',
   });
 
   this.close_container_.addEventListener('click', function() {
@@ -118,8 +117,9 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
 
   css.apply(header_container, {
     'flex': '0 1 20%',
-    'border-bottom': '1px solid ' + css.color('gray', 100),
-    'padding': '10px 0px',
+    'border-bottom': '2px solid ' + css.color('secondary_focus'),
+    'margin': '0px 10px',
+    'padding': '5px 0px',
   });
   this.decorate_header(header_container);
   container.appendChild(header_container);
@@ -139,8 +139,9 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
 
   css.apply(footer_container, {
     'flex': '0 1 15%',
-    'border-top': '1px solid ' + css.color('gray', 100),
-    'padding': '10px 0px',
+    'border-top': '2px solid ' + css.color('secondary_focus'),
+    'margin': '0px 10px',
+    'padding': '5px 0px',
   });
   this.decorate_footer(footer_container);
   container.appendChild(footer_container);

@@ -54,13 +54,8 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   // submit button
   var submit_button = forge.make('button', {
     'name': 'Generate',
-    'type': 'text',
   });
   container.appendChild(submit_button);
-
-  submit_button.addEventListener('click', function() {
-    self.state.foo = 123;
-  });
 
   paper.render(parent);
 };

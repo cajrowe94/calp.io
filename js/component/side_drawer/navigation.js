@@ -30,17 +30,34 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   title.innerText = 'calp.io';
 
   css.apply(title, {
+    'color': css.color('primary'),
     'width': 'fit-content',
     'text-decoration': 'underline',
+  });
+
+  // fancy trendy blobby blob
+  var blob = forge.make('blob', {});
+
+  css.apply(blob, {
+    'position': 'absolute',
+    'height': '30%',
+    'z-index': '-1',
+    'top': '-150px',
+    'left': '-100px',
   });
 
   // subtitle
   var sub_title = document.createElement('p');
   sub_title.innerText = 'by Caleb Rowe';
 
+  css.apply(sub_title, {
+    'color': css.color('primary'),
+  });
+
   anchor.appendChild(title);
   container.appendChild(anchor);
   container.appendChild(sub_title);
+  container.appendChild(blob);
 
   parent.appendChild(container);
 };

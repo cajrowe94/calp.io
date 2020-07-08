@@ -3,7 +3,7 @@
   padding:0; 
   box-sizing:border-box; 
   font-family: 'Montserrat', sans-serif;
-  color: #e1e1e1;
+  color: #C5C6C7;
 }
 
 html {
@@ -41,7 +41,7 @@ h3 {
   background: transparent;
   cursor: pointer;
   margin: 5px;
-  border-radius: 3px;
+  border-radius: 7px;
   text-transform: uppercase;
 }
 
