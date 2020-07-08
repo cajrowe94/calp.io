@@ -52,11 +52,10 @@ component.tile.prototype.decorate = function(parent) {
     'line-height': height,
     'position': 'absolute',
     'transition': 'opacity .2s ease-in-out',
-    'transition-delay': '.1s',
     'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
-    'background': css.color('secondary_focus'),
+    'background': css.color('background_secondary_alpha'),
     'backdrop-filter': 'blur(7px)',
-    'border-left': '5px solid ' + css.color('secondary'),
+    'border-left': '3px solid ' + css.color('secondary'),
     'opacity': '100',
   });
 

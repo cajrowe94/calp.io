@@ -32,6 +32,7 @@ css.prototype.color = function(color, opt_shade){
     'primary': theme.primary,
     'background': theme.background,
     'background_secondary': theme.background_secondary,
+    'background_secondary_alpha': theme.background_secondary_alpha,
     'background_alpha': theme.background_alpha,
     'secondary': theme.secondary,
     'secondary_focus': 'rgba(0, 227, 227, 0.1)',
@@ -85,6 +86,7 @@ css.prototype.get_theme = function(theme){
       'background': '#0B0C10',
       'background_alpha': 'rgba(18, 18, 18, 0.6)',
       'background_secondary': '#1F2833',
+      'background_secondary_alpha': 'rgba(31, 40, 51, 0.6)',
     },
     'forest': {
       'primary': '#363030',

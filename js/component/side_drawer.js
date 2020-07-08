@@ -109,6 +109,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
     'right': this.get_side() === 'right' ? '-' + this.drawer_width_ + 'px' : null,
     'transition': 'right .3s, left .3s',
     'z-index': 9999,
+    'overflow': 'hidden',
   });
 
   // build sections
@@ -116,8 +117,8 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
   header_container.setAttribute('data-nav', true);
 
   css.apply(header_container, {
-    'flex': '0 1 20%',
-    'border-bottom': '2px solid ' + css.color('secondary_focus'),
+    'flex': '0 1 25%',
+    // 'border-bottom': '2px solid ' + css.color('secondary_focus'),
     'margin': '0px 10px',
     'padding': '5px 0px',
   });
@@ -139,7 +140,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
 
   css.apply(footer_container, {
     'flex': '0 1 15%',
-    'border-top': '2px solid ' + css.color('secondary_focus'),
+    // 'border-top': '2px solid ' + css.color('secondary_focus'),
     'margin': '0px 10px',
     'padding': '5px 0px',
   });

@@ -40,10 +40,10 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
 
   css.apply(blob, {
     'position': 'absolute',
-    'height': '30%',
+    'height': css.is_mobile() ? '43%' : '35%',
     'z-index': '-1',
-    'top': '-150px',
-    'left': '-100px',
+    'top': '-15%',
+    'left': '-39%',
   });
 
   // subtitle
@@ -106,7 +106,18 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
 };
 
 component.side_drawer.navigation.prototype.decorate_footer = function(parent){
-  // todo
+  // fancy trendy blobby blob
+  var blob = forge.make('blob', {});
+
+  css.apply(blob, {
+    'position': 'absolute',
+    'height': css.is_mobile() ? '42%' : '35%',
+    'z-index': '-1',
+    'bottom': '-15%',
+    'right': '-39%',
+  });
+
+  parent.appendChild(blob);
 };
 
 component.side_drawer.navigation.prototype.get_class = function() {
