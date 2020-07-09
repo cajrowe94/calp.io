@@ -49,6 +49,7 @@ h3 {
   color: #102027;
   background: rgba(24, 255, 255, .8);
   border: transparent;
+  font-weight: bold;
 }
 
 .button.text {

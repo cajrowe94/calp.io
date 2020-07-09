@@ -10,10 +10,56 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   var paper = new component.paper({
     'title': 'Sentence generator',
     'header': 'Type a letter and length to use, or check random for either',
+    'buttons': {
+      'left': {
+        'text': 'Clear',
+      },
+      'right': {
+        'text': 'Generate',
+      },
+    },
   });
 
   // paper container
   var container = paper.get_container();
+
+  // paper buttons
+  var paper_buttons = paper.get_buttons();
+
+  // set the event listeners
+  paper_buttons.left.addEventListener('click', function() {
+    self.render(); // clear the inputs
+  });
+
+  // slidey container that shows the sentence
+  // will be on the bottom of the paper
+  var sentence_container = document.createElement('div');
+
+  css.apply(sentence_container, {
+    'opacity': '0',
+    'position': 'absolute',
+    'bottom': '0',
+    'left': '0',
+    'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
+    'background': css.color('background_secondary'),
+    'border-radius': '10px',
+    'height': '0px',
+    'width': '100%',
+    'transition': 'height .2s',
+    'z-index': '9998',
+    'text-align': 'center',
+  });
+
+  container.appendChild(sentence_container);
+
+  paper_buttons.right.addEventListener('click', function() {
+    self.show_sentence_(sentence_container); // build a sentence
+
+    css.apply(sentence_container, {
+      'height': '75px',
+      'opacity': '100',
+    });
+  });
 
   // letter input
   var letter = new component.input.text({
@@ -51,13 +97,20 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   });
   word_length_random.render(container);
 
-  // submit button
-  var submit_button = forge.make('button', {
-    'name': 'Generate',
-  });
-  container.appendChild(submit_button);
-
   paper.render(parent);
+};
+
+layer.sentence_generator.prototype.show_sentence_ = function(parent){
+  if (this.inputs_) {
+    var sentence = document.createElement('p');
+
+    css.apply(sentence, {
+      'line-height': '75px',
+    });
+    sentence.innerText = 'This is a sample sentence';
+
+    parent.appendChild(sentence);
+  }
 };
 
 layer.sentence_generator.prototype.get_class = function(){

@@ -3,6 +3,7 @@ component.paper = function(args){
   component.apply(this, arguments);
   this.title_ = args.title;
   this.header_ = args.header;
+  this.buttons_ = args.buttons;
   this.init_();
 };
 $.inherits(component.paper, component);
@@ -23,6 +24,10 @@ component.paper.prototype.decorate_contents = function(type){
 
 component.paper.prototype.get_container = function(parent){
   return this.container_;
+};
+
+component.paper.prototype.get_buttons = function(){
+  return this.buttons_;
 };
 
 component.paper.prototype.decorate_title_ = function(parent){
@@ -53,6 +58,46 @@ component.paper.prototype.decorate_header_ = function(parent){
   }
 };
 
+component.paper.prototype.decorate_buttons_ = function(parent){
+  if (this.buttons_) {
+    var buttons_container = document.createElement('p');
+
+    css.apply(buttons_container, {
+      'padding': '10px 15px',
+      'display': 'flex',
+      'justify-content': 'space-between',
+    });
+
+    // Left button is usually a Back or Clear action
+    // just use text for this button, no fill or border
+    if (this.buttons_.left) {
+      var left_button = forge.make('button', {
+        'name': this.buttons_.left.text || 'Left',
+        'type': 'text',
+      });
+
+      this.buttons_.left = left_button;
+
+      buttons_container.appendChild(left_button);
+    }
+
+    // Right button is meant to be the main call to action
+    // should be a filled in button
+    if (this.buttons_.right) {
+      var right_button = forge.make('button', {
+        'name': this.buttons_.right.text || 'Right',
+        'type': 'fill',
+      });
+
+      this.buttons_.right = right_button;
+
+      buttons_container.appendChild(right_button);
+    }
+
+    parent.appendChild(buttons_container);
+  }
+};
+
 component.paper.prototype.apply_paper_styles_ = function(container){
   css.apply(container, {
     'background': css.color('background_secondary'),
@@ -60,6 +105,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'min-height': '100px',
     'padding': '20px',
     'border-radius': '20px',
+    'position': 'relative',
   });
 };
 
@@ -73,14 +119,17 @@ component.paper.prototype.apply_container_styles_ = function(container){
 component.paper.prototype.init_ = function(){
   var top_container = document.createElement('div');
   var paper_container = document.createElement('div');
+  var buttons_container = document.createElement('div');
 
   this.apply_paper_styles_(paper_container);
   this.apply_container_styles_(top_container);
 
   this.decorate_title_(top_container);
+  this.decorate_buttons_(buttons_container);
   this.decorate_header_(paper_container);
 
   top_container.appendChild(paper_container);
+  top_container.appendChild(buttons_container);
 
   this.container_ = paper_container;
   this.top_container_ = top_container;
