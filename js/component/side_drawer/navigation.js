@@ -40,10 +40,10 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
 
   css.apply(blob, {
     'position': 'absolute',
-    'height': css.is_mobile() ? '43%' : '35%',
     'z-index': '-1',
-    'top': '-15%',
-    'left': '-39%',
+    'height': '500px',
+    'top': '-275px',
+    'left': '-170px',
   });
 
   // subtitle
