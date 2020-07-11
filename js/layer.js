@@ -24,7 +24,16 @@ layer.prototype.render = function(opt_parent){
       'scrollbar-width': 'none',
       '-ms-overflow-style': 'none',
     });
-    this.decorate(root);
+
+    var child_root = document.createElement('div');
+
+    css.apply(child_root, {
+      'width': css.is_mobile() ? '100%' : '75%',
+      'margin': '0 auto',
+    });
+
+    root.appendChild(child_root);
+    this.decorate(child_root);
   }
 };
 
@@ -43,4 +52,11 @@ layer.prototype.set_class = function(container) {
   this.get_class().forEach(function(class_name){
     container.classList.add(class_name);
   });
+};
+/**
+ * Init function
+ * Used to initiatilize variables before rendering
+ */
+layer.prototype.init = function() {
+  console.warn('overwrite this.init()');
 };

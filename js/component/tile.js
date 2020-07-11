@@ -14,7 +14,7 @@ component.tile.prototype.decorate = function(parent) {
 
   css.apply(main_container, {
     'height': height,
-    'max-width': '400px',
+    'width': '100%',
     'background': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'border-radius': '10px',
@@ -22,7 +22,6 @@ component.tile.prototype.decorate = function(parent) {
     'z-index': '10',
     'position': 'relative',
     'display': 'flex',
-    'margin': '20px',
   });
 
   // sliding sleeve container
@@ -44,7 +43,7 @@ component.tile.prototype.decorate = function(parent) {
   css.apply(sleeve_container, {
     'z-index': '11',
     'height': '100%',
-    'border-radius': '0px 10px 10px 0px',
+    'border-radius': '10px',
     'width': '100%',
     'top': '0',
     'right': '0',
@@ -55,7 +54,7 @@ component.tile.prototype.decorate = function(parent) {
     'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
     'background': css.color('background_secondary_alpha'),
     'backdrop-filter': 'blur(7px)',
-    'border-left': '3px solid ' + css.color('secondary'),
+    'border-left': '8px solid ' + css.color('secondary'),
     'opacity': '100',
   });
 

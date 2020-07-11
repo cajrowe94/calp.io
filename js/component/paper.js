@@ -4,7 +4,7 @@ component.paper = function(args){
   this.title_ = args.title;
   this.header_ = args.header;
   this.buttons_ = args.buttons;
-  this.init_();
+  this.init();
 };
 $.inherits(component.paper, component);
 
@@ -106,6 +106,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'padding': '20px',
     'border-radius': '20px',
     'position': 'relative',
+    'overflow': 'hidden',
   });
 };
 
@@ -116,7 +117,7 @@ component.paper.prototype.apply_container_styles_ = function(container){
   });
 };
 
-component.paper.prototype.init_ = function(){
+component.paper.prototype.init = function(){
   var top_container = document.createElement('div');
   var paper_container = document.createElement('div');
   var buttons_container = document.createElement('div');
@@ -137,4 +138,8 @@ component.paper.prototype.init_ = function(){
 
 component.paper.prototype.set_title = function(title){
   this.title_ = title;
+};
+
+component.paper.prototype.get_class = function(title){
+  return ['component', 'paper'];
 };

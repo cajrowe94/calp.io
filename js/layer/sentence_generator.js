@@ -45,7 +45,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
     'border-radius': '10px',
     'height': '0px',
     'width': '100%',
-    'transition': 'height .2s',
+    'transition': 'height .2s, opacity .2s',
     'z-index': '9998',
     'text-align': 'center',
   });
@@ -53,6 +53,9 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   container.appendChild(sentence_container);
 
   paper_buttons.right.addEventListener('click', function() {
+    // clear it out after each click
+    sentence_container.innerHTML = '';
+
     self.show_sentence_(sentence_container); // build a sentence
 
     css.apply(sentence_container, {
@@ -104,10 +107,11 @@ layer.sentence_generator.prototype.show_sentence_ = function(parent){
   if (this.inputs_) {
     var sentence = document.createElement('p');
 
+    sentence.innerText = 'This is a sample sentence';
+
     css.apply(sentence, {
       'line-height': '75px',
     });
-    sentence.innerText = 'This is a sample sentence';
 
     parent.appendChild(sentence);
   }
