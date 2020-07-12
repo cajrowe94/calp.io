@@ -24,7 +24,7 @@ component.tile.prototype.decorate = function(parent) {
     'display': 'flex',
   });
 
-  // sliding sleeve container
+  // sleeve container
   var sleeve_container = document.createElement('div');
 
   // hover sliding effects
@@ -40,7 +40,22 @@ component.tile.prototype.decorate = function(parent) {
     });
   });
 
-  css.apply(sleeve_container, {
+  var sleeve_background = {};
+
+  if (
+    this.options_ &&
+    this.options_.sleeve_image
+  ) {
+    sleeve_background['background-image'] = 'url("' + this.options_.sleeve_image + '")';
+    sleeve_background['background-repeat'] = 'no-repeat';
+    sleeve_background['background-position'] = 'center';
+    sleeve_background['background-size'] = 'cover';
+  } else {
+    sleeve_background.background = css.color('background_secondary_alpha');
+    sleeve_background['backdrop-filter'] = 'blur(7px)';
+  }
+
+  css.apply(sleeve_container, $.extend({
     'z-index': '11',
     'height': '100%',
     'border-radius': '10px',
@@ -52,11 +67,9 @@ component.tile.prototype.decorate = function(parent) {
     'position': 'absolute',
     'transition': 'opacity .2s ease-in-out',
     'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
-    'background': css.color('background_secondary_alpha'),
-    'backdrop-filter': 'blur(7px)',
     'border-left': '8px solid ' + css.color('secondary'),
     'opacity': '100',
-  });
+  }, sleeve_background));
 
   main_container.appendChild(sleeve_container);
 

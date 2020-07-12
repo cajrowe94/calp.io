@@ -15,7 +15,7 @@ layer.home.prototype.decorate_title = function(parent) {
 
   css.apply(container, {
     'margin': '50px 0px 30px 0px',
-  })
+  });
 
   // main title
   var title = document.createElement('h1');
@@ -48,6 +48,7 @@ layer.home.prototype.decorate_links = function(parent){
     'title': 'Blog',
     'icon': 'dashboard',
     'text': 'I write about traveling, electronics, and development.',
+    'sleeve_image': 'img/tiles/zion_tile.jpg',
     'click': function() {
       new layer.blog().render();
     },

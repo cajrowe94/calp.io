@@ -45,6 +45,7 @@ component.grid.prototype.init = function() {
     'row-gap': '15px',
     'grid-template-columns': 'repeat(' + (this.settings_.columns || 'auto-fit') + ', minmax(300px, 1fr))',
     'justify-items': 'center',
+    'margin': '20px 0px',
   });
 
   this.grid_container_ = grid_container;
