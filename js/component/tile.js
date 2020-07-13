@@ -1,4 +1,12 @@
-
+/**
+ * {
+ *   'icon': '',
+ *   'text': '',
+ *   'title': '',
+ *   'sleeve_image': '',
+ *   'click': '',
+ * }
+ */
 component.tile = function(args){
   component.apply(this, arguments);
   this.options_ = args;
@@ -6,6 +14,7 @@ component.tile = function(args){
 $.inherits(component.tile, component);
 
 component.tile.prototype.decorate = function(parent) {
+  var self = this;
   // main container for the tile
   var main_container = document.createElement('div');
   var height = '130px';
@@ -46,6 +55,20 @@ component.tile.prototype.decorate = function(parent) {
     this.options_ &&
     this.options_.sleeve_image
   ) {
+    var overlay = document.createElement('div');
+
+    css.apply(overlay, {
+      'position': 'absolute',
+      'top': '0',
+      'left': '0',
+      'width': '100%',
+      'height': '100%',
+      'z-index': '-1',
+      'background-image': 'linear-gradient(to right, rgba(18,18,18,1), rgba(18,18,18,0))',
+    });
+
+    sleeve_container.appendChild(overlay);
+
     sleeve_background['background-image'] = 'url("' + this.options_.sleeve_image + '")';
     sleeve_background['background-repeat'] = 'no-repeat';
     sleeve_background['background-position'] = 'center';
@@ -56,7 +79,7 @@ component.tile.prototype.decorate = function(parent) {
   }
 
   css.apply(sleeve_container, $.extend({
-    'z-index': '11',
+    'z-index': '10',
     'height': '100%',
     'border-radius': '10px',
     'width': '100%',
@@ -85,7 +108,6 @@ component.tile.prototype.decorate = function(parent) {
     css.apply(icon_sleeve, {
       'min-height': '40%',
       'width': 'auto',
-      'z-index': '10',
       'padding-left': '10px',
     });
 
@@ -137,6 +159,16 @@ component.tile.prototype.decorate = function(parent) {
     });
 
     sleeve_container.appendChild(title);
+  }
+
+  // if a link is provided, it overrides any other click event
+  if (
+    this.options_ &&
+    this.options_.link
+  ) {
+    main_container.addEventListener('click', function() {
+      window.open(self.options_.link, '_blank');
+    })
   }
 
   parent.appendChild(main_container);
