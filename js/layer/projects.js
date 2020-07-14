@@ -64,6 +64,7 @@ layer.projects.prototype.get_projects = function() {
       'title': 'Perlin noise',
       'text': 'Experimenting with perlin noise and word vector data.',
       'sleeve_image': 'img/tiles/perlin_noise_tile.jpg',
+      'link': 'https://calebrowe.work/wp-content/perlin-noise-wordvecs/wikiPerlinNoiseProject4/index.html',
     },
     {
       'title': 'Pen plotter',

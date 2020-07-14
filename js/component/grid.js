@@ -41,8 +41,8 @@ component.grid.prototype.init = function() {
   // main grid container
   css.apply(grid_container, {
     'display': 'grid',
-    'column-gap': '15px',
-    'row-gap': '15px',
+    'column-gap': '10px',
+    'row-gap': '10px',
     'grid-template-columns': 'repeat(' + (this.settings_.columns || 'auto-fit') + ', minmax(300px, 1fr))',
     'justify-items': 'center',
     'margin': '20px 0px',

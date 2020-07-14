@@ -64,7 +64,7 @@ component.tile.prototype.decorate = function(parent) {
       'width': '100%',
       'height': '100%',
       'z-index': '-1',
-      'background-image': 'linear-gradient(to right, rgba(18,18,18,1), rgba(18,18,18,0))',
+      'background-image': 'linear-gradient(to right, rgba(18,18,18,1), rgba(18,18,18,0.3))',
     });
 
     sleeve_container.appendChild(overlay);
@@ -81,7 +81,7 @@ component.tile.prototype.decorate = function(parent) {
   css.apply(sleeve_container, $.extend({
     'z-index': '10',
     'height': '100%',
-    'border-radius': '10px',
+    // 'border-radius': '10px',
     'width': '100%',
     'top': '0',
     'right': '0',
@@ -90,7 +90,6 @@ component.tile.prototype.decorate = function(parent) {
     'position': 'absolute',
     'transition': 'opacity .2s ease-in-out',
     'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
-    'border-left': '8px solid ' + css.color('secondary'),
     'opacity': '100',
   }, sleeve_background));
 
@@ -168,7 +167,7 @@ component.tile.prototype.decorate = function(parent) {
   ) {
     main_container.addEventListener('click', function() {
       window.open(self.options_.link, '_blank');
-    })
+    });
   }
 
   parent.appendChild(main_container);
