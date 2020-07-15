@@ -13,7 +13,7 @@ layer.projects.prototype.get_class = function(){
 };
 
 layer.projects.prototype.decorate_title = function(parent) {
-	var container = document.createElement('div');
+  var container = document.createElement('div');
 
   css.apply(container, {
     'margin': '50px 0px 30px 0px',
@@ -26,11 +26,11 @@ layer.projects.prototype.decorate_title = function(parent) {
 
   // sub title
   var sub_title = document.createElement('h3');
-  sub_title.innerText = 'Web dev and electronics';
+  sub_title.innerText = 'Web dev, art, and electronics';
   container.appendChild(sub_title);
 
   parent.appendChild(container);
-}
+};
 
 layer.projects.prototype.decorate_tiles = function(parent) {
   var grid = new component.grid();

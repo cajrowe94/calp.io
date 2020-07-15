@@ -30,9 +30,23 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   title.innerText = 'calp.io';
 
   css.apply(title, {
-    'color': css.color('primary'),
+    'color': css.color('background_secondary'),
     'width': 'fit-content',
-    'text-decoration': 'underline',
+    'font-weight': '400',
+    'transition': 'transform .1s',
+  });
+
+  // hover effects
+  title.addEventListener('mouseover', function() {
+    css.apply(title, {
+      'transform': 'rotate(2deg)',
+    });
+  });
+
+  title.addEventListener('mouseleave', function() {
+    css.apply(title, {
+      'transform': 'rotate(0deg)',
+    });
   });
 
   // fancy trendy blobby blob

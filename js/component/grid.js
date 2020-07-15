@@ -29,9 +29,9 @@ component.grid.prototype.add_cell = function(contents) {
 
   // use render function if available
   if (contents.render) {
-    contents.render(this.grid_container_)
+    contents.render(this.grid_container_);
   } else {
-    this.grid_container_.appendChild(contents);  
+    this.grid_container_.appendChild(contents);
   }
 };
 
@@ -41,8 +41,8 @@ component.grid.prototype.init = function() {
   // main grid container
   css.apply(grid_container, {
     'display': 'grid',
-    'column-gap': '10px',
-    'row-gap': '10px',
+    // 'column-gap': '10px',
+    // 'row-gap': '10px',
     'grid-template-columns': 'repeat(' + (this.settings_.columns || 'auto-fit') + ', minmax(350px, 1fr))',
     'justify-items': 'center',
     'margin': '20px 0px',

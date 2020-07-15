@@ -25,27 +25,36 @@ component.tile.prototype.decorate = function(parent) {
     'height': height,
     'width': '100%',
     'background': css.color('background_secondary'),
-    'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'border-radius': '10px',
+    'box-shadow': '0px 2px 8px rgba(0,0,0,0)',
     'cursor': 'pointer',
     'z-index': '10',
     'position': 'relative',
     'display': 'flex',
+    'transition': 'transform .1s',
   });
 
   // sleeve container
   var sleeve_container = document.createElement('div');
 
-  // hover sliding effects
+  // hover effects
   main_container.addEventListener('mouseover', function() {
     css.apply(sleeve_container, {
       'opacity': '0',
+    });
+
+    css.apply(main_container, {
+      'transform': 'rotate(2deg)',
     });
   });
 
   main_container.addEventListener('mouseleave', function() {
     css.apply(sleeve_container, {
       'opacity': '100',
+    });
+
+    css.apply(main_container, {
+      'transform': 'rotate(0deg)',
     });
   });
 
@@ -89,7 +98,7 @@ component.tile.prototype.decorate = function(parent) {
     'line-height': height,
     'position': 'absolute',
     'transition': 'opacity .2s ease-in-out',
-    'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
+    // 'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
     'opacity': '100',
   }, sleeve_background));
 
@@ -107,7 +116,7 @@ component.tile.prototype.decorate = function(parent) {
     css.apply(icon_sleeve, {
       'min-height': '25%',
       'width': 'auto',
-      'padding-left': '10px',
+      'padding-left': '20px',
     });
 
     var icon_main = forge.make('icon', {
@@ -149,12 +158,13 @@ component.tile.prototype.decorate = function(parent) {
     this.options_ &&
     this.options_.title
   ) {
-    var title = document.createElement('h2');
+    var title = document.createElement('h3');
     title.innerText = this.options_.title;
 
     css.apply(title, {
       'padding-left': '10px',
       'overflow': 'hidden',
+      'font-weight': '300',
     });
 
     sleeve_container.appendChild(title);
