@@ -43,7 +43,7 @@ component.grid.prototype.init = function() {
     'display': 'grid',
     'column-gap': '10px',
     'row-gap': '10px',
-    'grid-template-columns': 'repeat(' + (this.settings_.columns || 'auto-fit') + ', minmax(300px, 1fr))',
+    'grid-template-columns': 'repeat(' + (this.settings_.columns || 'auto-fit') + ', minmax(350px, 1fr))',
     'justify-items': 'center',
     'margin': '20px 0px',
   });
