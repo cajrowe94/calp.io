@@ -117,7 +117,7 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
   header_container.setAttribute('data-nav', true);
 
   css.apply(header_container, {
-    'flex': '0 1 25%',
+    'flex': '0 1 30%',
     // 'border-bottom': '2px solid ' + css.color('secondary_focus'),
     'margin': '0px 10px',
     'padding': '5px 0px',
