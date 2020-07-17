@@ -22,8 +22,51 @@ layer.blog.prototype.decorate = function(parent) {
     content_blocks.length
   ) {
     content_blocks.forEach(function(block) {
+      console.log(block);
       var block_container = document.createElement('div');
-      block_container.innerHTML = JSON.stringify(block);
+
+      css.apply(block_container, {
+        'padding': '15px 0px',
+      });
+
+      if (
+        block.type === 'image' &&
+        block.src
+      ) {
+        var block_image = document.createElement('img');
+
+        css.apply(block_image, {
+          'width': '100%',
+          'height': 'auto',
+        });
+
+        block_image.src = block.src;
+        block_container.appendChild(block_image);
+      }
+
+      if (
+        block.type === 'text' &&
+        block.title
+      ) {
+        var block_title = document.createElement('h3');
+
+        css.apply(block_title, {
+          'padding-bottom': '10px',
+        });
+
+        block_title.innerText = block.title;
+        block_container.appendChild(block_title);
+      }
+
+      if (
+        block.type === 'text' &&
+        block.text
+      ) {
+        var block_text = document.createElement('p');
+        block_text.innerText = block.text;
+        block_container.appendChild(block_text);
+      }
+
       container.appendChild(block_container);
     })
   }

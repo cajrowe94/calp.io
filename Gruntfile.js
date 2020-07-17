@@ -29,6 +29,7 @@ module.exports = function(grunt) {
           'js/layer.js',
           'js/component.js',
           'js/layer/*.js',
+          'js/layer/**/*.js',
           'js/component/*.js',
           'js/component/**/*.js'
         ],

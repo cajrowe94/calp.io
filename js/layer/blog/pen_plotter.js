@@ -1,3 +1,4 @@
+
 layer.blog.pen_plotter = function(){
   layer.blog.apply(this, arguments);
 };
@@ -9,9 +10,13 @@ layer.blog.pen_plotter.prototype.get_title = function(){
 
 layer.blog.pen_plotter.prototype.get_content_blocks = function(){
   return [
+    {
+      'type': 'image',
+      'src': 'img/blog/pen_plotter_1.jpg',
+    },
   	{
   		'type': 'text',
-      'title': 'This project was the highlight of my time at IU Kokomo.'
+      'title': 'This project was the highlight of my time at IU Kokomo.',
   		'text': 'One day after class, Wayne Madsen, my New Media professor at IUK, asked if I would like to get paid to work on an exciting research project in which we build a huge, homemade CNC drawing robot. Naturally, I agreed to do it. We started in August of 2017, and ‘finished’ by December of the same year. The reason I put ‘finished’ in quotes is because it’s never really finished, small additions and modifications are always needed. Perhaps calling it a ‘working model’ would be more appropriate. Nonetheless, the 6’x6′ robot was producing large, algorithmically crafted drawings to our horizontal canvas.',
   	},
     {
@@ -20,15 +25,15 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_2.jpg',
     },
     {
       'type': 'text',
-      'text': 'Software obviously proved to be where we ran into the most problems. Early on we tried using an Adafruit motor shield to run the steppers, but due to complications it caused with GRBL (Library for running g-code on your Arduino), we had to switch to independent drivers for each stepper motor. Through many hours of re-wiring, debugging, and head-scratchin’, we were able to get all the stepper motors running correctly and accepting g-code. When we were confident we had the right circuitry, we removed the breadboard and made finalized connections. Assisting Wayne with my amateur soldering skills, we were able to get through it with minimal issues and applied the hardware to the frame.'
+      'text': 'Software obviously proved to be where we ran into the most problems. Early on we tried using an Adafruit motor shield to run the steppers, but due to complications it caused with GRBL (Library for running g-code on your Arduino), we had to switch to independent drivers for each stepper motor. Through many hours of re-wiring, debugging, and head-scratchin’, we were able to get all the stepper motors running correctly and accepting g-code. When we were confident we had the right circuitry, we removed the breadboard and made finalized connections. Assisting Wayne with my amateur soldering skills, we were able to get through it with minimal issues and applied the hardware to the frame.',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_3.jpg',
     },
     {
       'type': 'text',
@@ -36,15 +41,15 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_4.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_5.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_6.jpg',
     },
     {
       'type': 'text',
@@ -52,7 +57,7 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_7.jpg',
     },
     {
       'type': 'text',
@@ -60,11 +65,11 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_8.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_9.jpg',
     },
     {
       'type': 'text',
@@ -72,11 +77,11 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_10.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_11.jpg',
     },
     {
       'type': 'text',
@@ -84,15 +89,15 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_12.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_13.jpg',
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_14.jpg',
     },
     {
       'type': 'text',
@@ -100,11 +105,11 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     },
     {
       'type': 'image',
-      'src': '',
+      'src': 'img/blog/pen_plotter_15.jpg',
     },
     {
       'type': 'text',
-      'text': '',
+      'text': 'This project is a time in my life that I can look back at and reminisce of everything that it taught me. The entire process of planning, to execution and completion held numerous teaching points that can be applied to anything in life. Wayne was a blast to work with and I’m honored I was chosen to work as his assistant.',
     }
   ];
 };
