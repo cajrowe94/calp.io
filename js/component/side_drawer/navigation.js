@@ -32,7 +32,6 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   css.apply(title, {
     'color': css.color('background_secondary'),
     'width': 'fit-content',
-    'font-weight': '400',
     'transition': 'transform .1s',
   });
 
@@ -60,17 +59,8 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
     'left': '-170px',
   });
 
-  // subtitle
-  var sub_title = document.createElement('p');
-  sub_title.innerText = 'by Caleb Rowe';
-
-  css.apply(sub_title, {
-    'color': css.color('primary'),
-  });
-
   anchor.appendChild(title);
   container.appendChild(anchor);
-  container.appendChild(sub_title);
   container.appendChild(blob);
 
   parent.appendChild(container);

@@ -73,7 +73,9 @@ layer.projects.prototype.get_projects = function() {
       'title': 'Pen plotter',
       'text': 'Homemade 6\'x6\' Arduino drawing machine',
       'sleeve_image': 'img/tiles/pen_plotter_tile.jpg',
-      'link': 'https://calebrowe.work/projects/arduino-electronics/homemade-cnc-plotter/',
+      'click': function() {
+        new layer.blog.pen_plotter().render();
+      },
       'icon': 'memory',
     },
     {
