@@ -38,6 +38,7 @@ component.grid.prototype.init = function() {
 
   // main grid container
   css.apply(grid_container, {
+    // 'overflow': 'hidden',
     'display': 'grid',
     // 'column-gap': '10px',
     // 'row-gap': '10px',

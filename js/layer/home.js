@@ -60,9 +60,7 @@ layer.home.prototype.decorate_links = function(parent){
 };
 
 layer.home.prototype.decorate_blocks = function(parent){
-  var grid = new component.grid({
-    'min_width': '450px',
-  });
+  var grid = new component.grid();
 
   var pen_plotter_block = new component.block({
     'background_image': 'img/gifs/pen_plotter_gif_1.gif',
