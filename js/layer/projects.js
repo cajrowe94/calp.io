@@ -22,7 +22,7 @@ layer.projects.prototype.get_sub_title = function(parent) {
 layer.projects.prototype.decorate_tiles = function(parent) {
   var grid = new component.grid();
 
-  // // get all the projects
+  // get all the projects
   var projects = this.get_projects();
 
   projects.forEach(function(project){
