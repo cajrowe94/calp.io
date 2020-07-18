@@ -116,7 +116,6 @@ component.tile.prototype.decorate = function(parent) {
     });
 
     css.apply(icon_sleeve, {
-      'min-height': '25%',
       'width': 'auto',
       'padding-left': '20px',
     });

@@ -4,7 +4,6 @@ layer.projects = function(){
 $.inherits(layer.projects, layer);
 
 layer.projects.prototype.decorate = function(parent) {
-  this.decorate_title(parent);
   this.decorate_tiles(parent);
 };
 
@@ -12,24 +11,12 @@ layer.projects.prototype.get_class = function(){
   return ['layer', 'projects'];
 };
 
-layer.projects.prototype.decorate_title = function(parent) {
-  var container = document.createElement('div');
+layer.projects.prototype.get_title = function(parent) {
+  return 'Projects';
+};
 
-  css.apply(container, {
-    'margin': '50px 0px 30px 0px',
-  });
-
-  // main title
-  var title = document.createElement('h1');
-  title.innerText = 'My Projects.';
-  container.appendChild(title);
-
-  // sub title
-  var sub_title = document.createElement('h3');
-  sub_title.innerText = 'Web dev, art, and electronics';
-  container.appendChild(sub_title);
-
-  parent.appendChild(container);
+layer.projects.prototype.get_sub_title = function(parent) {
+  return 'Web dev, art, and electronics';
 };
 
 layer.projects.prototype.decorate_tiles = function(parent) {
@@ -44,7 +31,7 @@ layer.projects.prototype.decorate_tiles = function(parent) {
   });
 
   grid.render(parent);
-}
+};
 
 layer.projects.prototype.get_projects = function() {
   return [
@@ -180,28 +167,36 @@ layer.projects.prototype.get_projects = function() {
       'title': 'Servo wave',
       'text': 'Using servo motors to emulate wavelike movement',
       'sleeve_image': 'img/tiles/servo_wave_tile.jpg',
-      'link': 'https://calebrowe.work/projects/arduino-electronics/servo-wave/',
+      'click': function() {
+        new layer.blog.servo_wave().render();
+      },
       'icon': 'memory',
     },
     {
       'title': 'Hanging plotter',
       'text': 'Vertical pen plotter, controllable with a joystick',
       'sleeve_image': 'img/tiles/hanging_plotter_tile.jpg',
-      'link': 'https://calebrowe.work/projects/arduino-electronics/vertical-plotter/',
+      'click': function() {
+        new layer.blog.hanging_plotter().render();
+      },
       'icon': 'memory',
     },
     {
       'title': 'LED Toy',
       'text': 'Using basic components to build an Arduino on a breadboard',
       'sleeve_image': 'img/tiles/led_toy_tile.jpg',
-      'link': 'https://calebrowe.work/projects/arduino-electronics/led-toy/',
+      'click': function() {
+        new layer.blog.led_toy().render();
+      },
       'icon': 'memory',
     },
     {
       'title': 'ECU data',
       'text': 'Reading ECU data from my car and mapping it to LED colors',
       'sleeve_image': 'img/tiles/ecu_data_tile.jpg',
-      'link': 'https://calebrowe.work/projects/arduino-electronics/ecu_data_viz/',
+      'click': function() {
+        new layer.blog.ecu_data().render();
+      },
       'icon': 'memory',
     },
     {

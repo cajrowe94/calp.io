@@ -28,10 +28,11 @@ layer.prototype.render = function(opt_parent){
     var child_root = document.createElement('div');
 
     css.apply(child_root, {
-      'width': css.is_mobile() ? '100%' : '75%',
+      'max-width': '1300px',
       'margin': '0 auto',
     });
 
+    this.decorate_title(child_root);
     root.appendChild(child_root);
     this.decorate(child_root);
   }
@@ -39,6 +40,38 @@ layer.prototype.render = function(opt_parent){
 
 layer.prototype.decorate = function(parent) {
   // overwrite
+};
+
+layer.prototype.decorate_title = function(parent) {
+  var container = document.createElement('div');
+
+  css.apply(container, {
+    'margin': '50px 0px 30px 0px',
+  });
+
+  // main title
+  if (this.get_title()) {
+    var title = document.createElement('h1');
+    title.innerText = this.get_title();
+    container.appendChild(title);
+  }
+
+  // sub title
+  if (this.get_sub_title()) {
+    var sub_title = document.createElement('h3');
+    sub_title.innerText = this.get_sub_title();
+    container.appendChild(sub_title);
+  }
+
+  parent.appendChild(container);
+};
+
+layer.prototype.get_title = function() {
+  return null;
+};
+
+layer.prototype.get_sub_title = function() {
+  return null;
 };
 
 layer.prototype.get_class = function() {

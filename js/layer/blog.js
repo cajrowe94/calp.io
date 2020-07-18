@@ -5,15 +5,11 @@ $.inherits(layer.blog, layer);
 
 layer.blog.prototype.decorate = function(parent) {
   var container = document.createElement('div');
-  
+
   css.apply(container, {
-    'width': css.is_mobile() ? '95%' : '60%',
+    'max-width': '800px',
     'margin': '0 auto',
   });
-
-  var title = document.createElement('h1');
-  title.innerText = this.get_title();
-  container.appendChild(title);
 
   var content_blocks = this.get_content_blocks();
 
@@ -22,7 +18,6 @@ layer.blog.prototype.decorate = function(parent) {
     content_blocks.length
   ) {
     content_blocks.forEach(function(block) {
-      console.log(block);
       var block_container = document.createElement('div');
 
       css.apply(block_container, {
@@ -59,6 +54,24 @@ layer.blog.prototype.decorate = function(parent) {
       }
 
       if (
+        block.link
+      ) {
+        var block_link_container = document.createElement('div');
+        var block_link = document.createElement('a');
+
+        css.apply(block_link_container, {
+          'font-size': '24px',
+          'margin-bottom': '10px',
+        });
+
+        block_link.href = block.link.url;
+        block_link.target = '_blank';
+        block_link.innerText = block.link.text;
+        block_link_container.appendChild(block_link);
+        block_container.appendChild(block_link_container);
+      }
+
+      if (
         block.type === 'text' &&
         block.text
       ) {
@@ -68,7 +81,7 @@ layer.blog.prototype.decorate = function(parent) {
       }
 
       container.appendChild(block_container);
-    })
+    });
   }
 
   parent.appendChild(container);
@@ -81,9 +94,9 @@ layer.blog.prototype.get_class = function(){
 /**
  * Set the title of the blog
  */
-layer.blog.prototype.get_title = function() {
-	return 'todo overwrite get_title()';
-}
+// layer.blog.prototype.get_blog_title = function() {
+//   return 'todo overwrite get_title()';
+// };
 
 /**
  * Return JSON object of all contents
@@ -91,4 +104,4 @@ layer.blog.prototype.get_title = function() {
  */
 layer.blog.prototype.get_content_blocks = function() {
   return [];
-}
+};

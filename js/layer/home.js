@@ -4,30 +4,16 @@ layer.home = function(){
 $.inherits(layer.home, layer);
 
 layer.home.prototype.decorate = function(parent) {
-  // decorate intro text
-  this.decorate_title(parent);
   // decorate tiles
   this.decorate_links(parent);
 };
 
-layer.home.prototype.decorate_title = function(parent) {
-  var container = document.createElement('div');
+layer.home.prototype.get_title = function() {
+  return 'Hi, I\'m Caleb';
+};
 
-  css.apply(container, {
-    'margin': '50px 0px 30px 0px',
-  });
-
-  // main title
-  var title = document.createElement('h1');
-  title.innerText = 'Hi, I\'m Caleb.';
-  container.appendChild(title);
-
-  // sub title
-  var sub_title = document.createElement('h3');
-  sub_title.innerText = 'I got a thing for web development and fiddling with electronics.';
-  container.appendChild(sub_title);
-
-  parent.appendChild(container);
+layer.home.prototype.get_sub_title = function() {
+  return 'I got a thing for web development and fiddling with electronics.';
 };
 
 layer.home.prototype.decorate_links = function(parent){
@@ -50,7 +36,7 @@ layer.home.prototype.decorate_links = function(parent){
     'text': 'I write about traveling, electronics, and development.',
     'sleeve_image': 'img/tiles/zion_tile.jpg',
     'click': function() {
-      new layer.blog().render();
+      new layer.blog_home().render();
     },
   });
 

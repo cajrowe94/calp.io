@@ -11,8 +11,6 @@ component.input.text.prototype.decorate_contents = function(parent){
   // container stuff
   var container = document.createElement('div');
 
-  console.log(this.settings);
-
   css.apply(container, {
     'display': 'flex',
     'flex-direction': 'column',

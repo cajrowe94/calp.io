@@ -84,7 +84,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'icon': 'dashboard',
       'action': (function() {
         self.hide();
-        new layer.blog().render();
+        new layer.blog_home().render();
       }),
     },
     {

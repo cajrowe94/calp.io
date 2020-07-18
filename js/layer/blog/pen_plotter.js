@@ -14,11 +14,14 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
       'type': 'image',
       'src': 'img/blog/pen_plotter_1.jpg',
     },
-  	{
-  		'type': 'text',
-      'title': 'This project was the highlight of my time at IU Kokomo.',
-  		'text': 'One day after class, Wayne Madsen, my New Media professor at IUK, asked if I would like to get paid to work on an exciting research project in which we build a huge, homemade CNC drawing robot. Naturally, I agreed to do it. We started in August of 2017, and ‘finished’ by December of the same year. The reason I put ‘finished’ in quotes is because it’s never really finished, small additions and modifications are always needed. Perhaps calling it a ‘working model’ would be more appropriate. Nonetheless, the 6’x6′ robot was producing large, algorithmically crafted drawings to our horizontal canvas.',
-  	},
+    {
+      'type': 'text',
+      'link': {
+        'text': 'Watch the video!',
+        'url': 'https://www.youtube.com/watch?v=Jm7jGlNqxU0&t=594s',
+      },
+      'text': 'One day after class, Wayne Madsen, my New Media professor at IUK, asked if I would like to get paid to work on an exciting research project in which we build a huge, homemade CNC drawing robot. Naturally, I agreed to do it. We started in August of 2017, and ‘finished’ by December of the same year. The reason I put ‘finished’ in quotes is because it’s never really finished, small additions and modifications are always needed. Perhaps calling it a ‘working model’ would be more appropriate. Nonetheless, the 6’x6′ robot was producing large, algorithmically crafted drawings to our horizontal canvas.',
+    },
     {
       'type': 'text',
       'text': 'Originally we weren’t planning on producing such a large plotter. We discussed different options, such as whether to do a hanging plotter or a horizontal plotter, and how big to make it. We decided on a horizontal, ground plotter for it’s high precision and versatility. The way we ended up both agreeing to tackling 6’x6′ model was pretty simple really. Why not? The software hiccups we would encounter would be consistent across any size we chose and the hardware would be nearly the same, just bigger.',
@@ -110,6 +113,6 @@ layer.blog.pen_plotter.prototype.get_content_blocks = function(){
     {
       'type': 'text',
       'text': 'This project is a time in my life that I can look back at and reminisce of everything that it taught me. The entire process of planning, to execution and completion held numerous teaching points that can be applied to anything in life. Wayne was a blast to work with and I’m honored I was chosen to work as his assistant.',
-    }
+    },
   ];
 };
