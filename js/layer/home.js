@@ -6,6 +6,7 @@ $.inherits(layer.home, layer);
 layer.home.prototype.decorate = function(parent) {
   // decorate tiles
   this.decorate_links(parent);
+  this.decorate_blocks(parent);
 };
 
 layer.home.prototype.get_title = function() {
@@ -54,6 +55,34 @@ layer.home.prototype.decorate_links = function(parent){
   });
 
   grid.add_cell(about_tile);
+
+  grid.render(parent);
+};
+
+layer.home.prototype.decorate_blocks = function(parent){
+  var grid = new component.grid({
+    'min_width': '450px',
+  });
+
+  var pen_plotter_block = new component.block({
+    'background_image': 'img/gifs/pen_plotter_gif_1.gif',
+    'link': {
+      'url': 'https://www.youtube.com/watch?v=Jm7jGlNqxU0',
+      'text': 'Pen plotter build video',
+    },
+  });
+
+  grid.add_cell(pen_plotter_block);
+
+  var drone_block = new component.block({
+    'background_image': 'img/gifs/drone_gif_1.gif',
+    'link': {
+      'url': 'https://www.youtube.com/watch?v=ruX-3NFbIZ4',
+      'text': 'Watch me fly!',
+    },
+  });
+
+  grid.add_cell(drone_block);
 
   grid.render(parent);
 };

@@ -25,8 +25,6 @@ component.grid.prototype.decorate = function(parent){
  */
 
 component.grid.prototype.add_cell = function(contents) {
-  var wrapper = document.createElement('div');
-
   // use render function if available
   if (contents.render) {
     contents.render(this.grid_container_);
