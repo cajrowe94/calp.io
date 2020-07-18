@@ -34,7 +34,7 @@ layer.about.prototype.decorate = function(parent) {
     ' Along with making websites, I really enjoy playing around with electronics. I\'ve completed a handful of Arduino projects,' +
     ' and recently have found myself diving into drone racing. I built my own racing quad, and despite hundreds of crashes, have' +
     ' gotten pretty good!' +
-    '\n\nOutside of the tech space, travelling and the outdoors has become a big part of my life.' +
+    '\n\nOutside of the tech space, traveling and the outdoors has become a big part of my life.' +
     ' Visiting national parks is my favorite thing to do in this world. The feeling of vertigo while staring down ' +
     ' a steep canyon wall is something you just don\'t get very often in life. I try and take every opportunity I can to' +
     ' go somewhere new with people I love; life comes and goes very quickly and I never want to have any regrets once I\'m' +

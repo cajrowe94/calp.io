@@ -21,8 +21,9 @@ layer.home.prototype.decorate_links = function(parent){
 
   var projects_tile = new component.tile({
     'title': 'Projects',
-    'icon': 'memory',
+    'icon': 'rocket',
     'text': 'Collection of all my projects I have done through the years.',
+    'sleeve_image': 'img/tiles/cosmos_tile.jpg',
     'click': function() {
       new layer.projects().render();
     },
@@ -46,6 +47,7 @@ layer.home.prototype.decorate_links = function(parent){
     'title': 'About',
     'icon': 'person',
     'text': 'The heck does calp mean?',
+    'sleeve_image': 'img/about/about_page_1.jpg',
     'click': function() {
       new layer.about().render();
     },

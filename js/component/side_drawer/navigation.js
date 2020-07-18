@@ -73,7 +73,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
   var list_contents = [
     {
       'name': 'Projects',
-      'icon': 'memory',
+      'icon': 'rocket',
       'action': (function() {
         self.hide();
         new layer.projects().render();
@@ -95,14 +95,14 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
         new layer.about().render();
       }),
     },
-    {
-      'name': 'Sentence Generator',
-      'icon': 'message',
-      'action': (function() {
-        self.hide();
-        new layer.sentence_generator().render();
-      }),
-    },
+    // {
+    //   'name': 'Sentence Generator',
+    //   'icon': 'message',
+    //   'action': (function() {
+    //     self.hide();
+    //     new layer.sentence_generator().render();
+    //   }),
+    // },
   ];
 
   nav_list.set_contents(list_contents);

@@ -35,6 +35,7 @@ layer.prototype.render = function(opt_parent){
     this.decorate_title(child_root);
     root.appendChild(child_root);
     this.decorate(child_root);
+    window.scrollTo(0, 0);
   }
 };
 
