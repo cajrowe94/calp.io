@@ -118,9 +118,72 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
     'height': css.is_mobile() ? '42%' : '35%',
     'z-index': '-1',
     'bottom': '-15%',
-    'right': '-39%',
+    'right': '-32%',
   });
 
+  // social media links
+  var container = document.createElement('div');
+
+  css.apply(container, {
+    'display': 'flex',
+    'position': 'absolute',
+    'bottom': '5px',
+    'right': '8px',
+  });
+
+  // github
+  var github_icon = forge.make('icon', {
+    'file_name': 'github',
+    'theme': 'dark',
+  });
+
+  css.apply(github_icon, {
+    'height': '42px',
+    'cursor': 'pointer',
+  });
+
+  github_icon.addEventListener('click', function() {
+    window.open('https://github.com/cajrowe94', '_blank');
+  });
+
+  container.appendChild(github_icon);
+
+  // linkedin
+  var linkedin_icon = forge.make('icon', {
+    'file_name': 'linkedin',
+    'theme': 'dark',
+  });
+
+  css.apply(linkedin_icon, {
+    'height': '42px',
+    'cursor': 'pointer',
+  });
+
+  linkedin_icon.addEventListener('click', function() {
+    window.open('https://www.linkedin.com/in/calebrowe94/', '_blank');
+  });
+
+  container.appendChild(linkedin_icon);
+
+
+  // youtube
+  var youtube_icon = forge.make('icon', {
+    'file_name': 'youtube',
+    'theme': 'dark',
+  });
+
+  css.apply(youtube_icon, {
+    'height': '42px',
+    'cursor': 'pointer',
+  });
+
+  youtube_icon.addEventListener('click', function() {
+    window.open('https://www.youtube.com/channel/UCtU68pn8gpS72gOd_FGladg/', '_blank');
+  });
+
+  container.appendChild(youtube_icon);
+
+  parent.appendChild(container);
   parent.appendChild(blob);
 };
 
