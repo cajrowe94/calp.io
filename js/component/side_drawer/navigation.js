@@ -48,6 +48,15 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
     });
   });
 
+  // email contact
+  var email_contact = document.createElement('p');
+  email_contact.innerText = 'caleb@calp.io';
+
+  css.apply(email_contact, {
+    'color': css.color('background_secondary'),
+    'font-size': '13px',
+  });
+
   // fancy trendy blobby blob
   var blob = forge.make('blob', {});
 
@@ -61,6 +70,7 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
 
   anchor.appendChild(title);
   container.appendChild(anchor);
+  container.appendChild(email_contact);
   container.appendChild(blob);
 
   parent.appendChild(container);
@@ -126,9 +136,10 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
 
   css.apply(container, {
     'display': 'flex',
+    'flex-direction': 'column',
     'position': 'absolute',
     'bottom': '5px',
-    'right': '8px',
+    'left': '8px',
   });
 
   // github
@@ -138,7 +149,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   });
 
   css.apply(github_icon, {
-    'height': '42px',
+    'height': '38px',
     'cursor': 'pointer',
   });
 
@@ -155,7 +166,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   });
 
   css.apply(linkedin_icon, {
-    'height': '42px',
+    'height': '38px',
     'cursor': 'pointer',
   });
 
@@ -173,7 +184,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   });
 
   css.apply(youtube_icon, {
-    'height': '42px',
+    'height': '38px',
     'cursor': 'pointer',
   });
 

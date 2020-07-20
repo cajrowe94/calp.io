@@ -72,15 +72,15 @@ layer.blog_home.prototype.get_blogs = function() {
       },
       'icon': 'memory',
     },
-    {
-      'title': 'Zion',
-      'text': 'A little bit about why I fell in love with Zion National Park.',
-      'sleeve_image': 'img/tiles/zion_tile_2.jpg',
-      'click': function() {
-        new layer.blog.zion().render();
-      },
-      'icon': 'landscape',
-    },
+    // {
+    //   'title': 'Zion',
+    //   'text': 'A little bit about why I fell in love with Zion National Park.',
+    //   'sleeve_image': 'img/tiles/zion_tile_2.jpg',
+    //   'click': function() {
+    //     new layer.blog.zion().render();
+    //   },
+    //   'icon': 'landscape',
+    // },
   ];
 };
 
