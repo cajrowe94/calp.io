@@ -3,10 +3,31 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-image-preload');
 
   // project config
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    image_preload: {
+      options: {
+        jsvar: 'PRELOADER',
+        root: 'http://calp.io/',
+        inlineFile: null,
+        inlineLoad: null,
+        rev: false      
+      },
+      files:[{
+        cwd: 'img', 
+        src: '**/*.{jpg, jpeg, png, gif, svg}'
+      }],        
+      process:{
+        files:[{
+          cwd: 'img',
+          src: 'index.html',
+          dest: 'tmp/'
+        }]
+      }
+    },
     watch: {
       files: [
         'index.html',
@@ -58,5 +79,5 @@ module.exports = function(grunt) {
   // prod concats and minimizes, no watching
   // todo prod needs to delete concat.js
   // also will need to somehow switch which js file my index.html calls
-  grunt.registerTask('prod', ['concat', 'uglify']);
+  grunt.registerTask('prod', ['image_preload', 'concat', 'uglify']);
 }
