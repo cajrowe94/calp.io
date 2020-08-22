@@ -24,7 +24,7 @@ layer.home.prototype.decorate_links = function(parent){
     'title': 'Projects',
     'icon': 'rocket',
     'text': 'Collection of all my projects I have done through the years.',
-    'sleeve_image': 'img/tiles/cosmos_tile.jpg',
+    'sleeve_image': 'img/tiles/cosmos_tile.png',
     'click': function() {
       new layer.projects().render();
     },

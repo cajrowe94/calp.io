@@ -75,7 +75,7 @@ forge.prototype.get_blob_ = function(blob_args) {
   };
 
   blob.classList.add('blob');
-  blob.setAttribute('src', 'img/blobs/' + 'blob_' + random_num(1, 6) + '.svg');
+  blob.setAttribute('src', 'img/blobs/' + 'blob_' + random_num(1, 5) + '.svg');
 
 
   return blob;

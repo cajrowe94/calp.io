@@ -62,7 +62,7 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
 
   css.apply(blob, {
     'position': 'absolute',
-    'z-index': '-1',
+    'z-index': '-2',
     'height': '500px',
     'top': '-275px',
     'left': '-170px',
@@ -126,7 +126,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   css.apply(blob, {
     'position': 'absolute',
     'height': css.is_mobile() ? '42%' : '35%',
-    'z-index': '-1',
+    'z-index': '-2',
     'bottom': '-15%',
     'right': '-32%',
   });
@@ -194,8 +194,8 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
 
   container.appendChild(youtube_icon);
 
-  parent.appendChild(container);
   parent.appendChild(blob);
+  parent.appendChild(container);
 };
 
 component.side_drawer.navigation.prototype.get_class = function() {
