@@ -39,7 +39,7 @@ layer.blog_home.prototype.get_blogs = function() {
     {
       'title': 'Pen Plotter',
       'text': 'Undergraduate research project at IU Kokomo. 6\'x6\' Arduino drawing machine.',
-      'sleeve_image': 'img/tiles/pen_plotter_tile.jpg',
+      'sleeve_image': 'img/tiles/pen_plotter_tile.png',
       'click': function() {
         new layer.blog.pen_plotter().render();
       },
@@ -48,7 +48,7 @@ layer.blog_home.prototype.get_blogs = function() {
     {
       'title': 'ECU Data',
       'text': 'Reading ECU data from my car and using it to control LED\'s.',
-      'sleeve_image': 'img/tiles/ecu_data_tile.jpg',
+      'sleeve_image': 'img/tiles/ecu_data_tile.png',
       'click': function() {
         new layer.blog.ecu_data().render();
       },
@@ -57,7 +57,7 @@ layer.blog_home.prototype.get_blogs = function() {
     {
       'title': 'Servo Wave',
       'text': 'I glued a bunch of servo motors to a piece of wood and made it do the wave.',
-      'sleeve_image': 'img/tiles/servo_wave_tile.jpg',
+      'sleeve_image': 'img/tiles/servo_wave_tile.png',
       'click': function() {
         new layer.blog.servo_wave().render();
       },
@@ -66,7 +66,7 @@ layer.blog_home.prototype.get_blogs = function() {
     {
       'title': 'LED Toy',
       'text': 'Arduino on a breadboard project.',
-      'sleeve_image': 'img/tiles/led_toy_tile.jpg',
+      'sleeve_image': 'img/tiles/led_toy_tile.png',
       'click': function() {
         new layer.blog.led_toy().render();
       },

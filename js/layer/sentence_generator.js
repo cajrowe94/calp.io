@@ -107,6 +107,8 @@ layer.sentence_generator.prototype.show_sentence_ = function(parent){
   if (this.inputs_) {
     var sentence = document.createElement('p');
 
+    var response_data = this.get_word_data_();
+
     sentence.innerText = 'This is a sample sentence';
 
     css.apply(sentence, {
@@ -115,6 +117,12 @@ layer.sentence_generator.prototype.show_sentence_ = function(parent){
 
     parent.appendChild(sentence);
   }
+};
+
+layer.sentence_generator.prototype.get_word_data_ = function(parent){
+  var word_data = {};
+
+  $.XMLHttpRequest('https://api.datamuse.com/words?ml=ringing+in+the+ears');
 };
 
 layer.sentence_generator.prototype.get_class = function(){
