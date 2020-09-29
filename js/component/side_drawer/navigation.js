@@ -120,17 +120,6 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
 };
 
 component.side_drawer.navigation.prototype.decorate_footer = function(parent){
-  // fancy trendy blobby blob
-  var blob = forge.make('blob', {});
-
-  css.apply(blob, {
-    'position': 'absolute',
-    'height': css.is_mobile() ? '42%' : '35%',
-    'z-index': '-2',
-    'bottom': '-15%',
-    'right': '-32%',
-  });
-
   // social media links
   var container = document.createElement('div');
 
@@ -194,7 +183,6 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
 
   container.appendChild(youtube_icon);
 
-  parent.appendChild(blob);
   parent.appendChild(container);
 };
 
