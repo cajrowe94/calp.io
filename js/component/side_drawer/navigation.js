@@ -105,12 +105,20 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
         new layer.about().render();
       }),
     },
+    // {
+    //   'name': 'Sentence Generator',
+    //   'icon': 'message',
+    //   'action': (function() {
+    //     self.hide();
+    //     new layer.sentence_generator().render();
+    //   }),
+    // },
     {
-      'name': 'Sentence Generator',
-      'icon': 'message',
+      'name': 'Canvas',
+      'icon': 'brush',
       'action': (function() {
         self.hide();
-        new layer.sentence_generator().render();
+        new layer.canvas.crevasse().render();
       }),
     },
   ];
