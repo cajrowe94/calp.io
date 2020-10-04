@@ -9,6 +9,10 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       files: [
+        // todo remove this
+        'web_jam/halloween/index.html',
+        'web_jam/halloween/style.css',
+        'web_jam/halloween/js/*.js',
         'index.html',
         'style.css',
         '*.js',
@@ -51,11 +55,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['concat']);
 
   // grunt dev doesnt minimize, just concat and watch
-  // todo
   grunt.registerTask('dev', ['concat', 'uglify', 'watch']);
 
   // prod concats and minimizes, no watching
   // todo prod needs to delete concat.js
   // also will need to somehow switch which js file my index.html calls
   grunt.registerTask('prod', ['concat', 'uglify']);
-}
+};
