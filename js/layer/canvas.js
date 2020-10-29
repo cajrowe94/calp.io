@@ -1,3 +1,5 @@
+
+
 layer.canvas = function(){
   layer.apply(this, arguments);
 };
@@ -13,10 +15,11 @@ layer.canvas.prototype.decorate = function(parent) {
     'position': 'absolute',
     'top': '0',
     'left': '0',
-    'height': '100vh',
-    'width': '100vw',
     'overflow': 'hidden',
   });
+
+  canvas.width = document.body.clientWidth;
+  canvas.height = document.body.clientHeight;
 
   // send decorate_canvas the context
   this.decorate_canvas(canvas);
@@ -39,4 +42,25 @@ layer.canvas.prototype.get_context = function() {
 layer.canvas.prototype.get_class = function(){
   return ['layer', 'canvas'];
 };
+
+/**
+ * Helper functions
+ */
+
+layer.canvas.prototype.calculate_distance = function(xin, yin, x2in, y2in) {
+  var a = xin - x2in;
+  var b = yin - y2in;
+
+  var d = Math.sqrt(a*a + b*b);
+  
+  return d;
+};
+
+layer.canvas.prototype.get_random_int = function(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+layer.canvas.prototype.get_random_float = function(min, max){
+  return Math.random() * (max - min) + min;
+}
 

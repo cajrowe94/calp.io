@@ -118,7 +118,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       'icon': 'brush',
       'action': (function() {
         self.hide();
-        new layer.canvas.crevasse().render();
+        new layer.canvas.collisions().render();
       }),
     },
   ];

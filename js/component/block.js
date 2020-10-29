@@ -18,6 +18,7 @@ component.block.prototype.decorate = function(parent) {
     'overflow': 'hidden',
     'width': '100%',
     'height': '350px',
+    'z-index': '2',
     'background-size': 'cover',
     'background-repeat': 'no-repeat',
     'background-position': 'center',
