@@ -9,10 +9,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       files: [
-        // todo remove this
-        'web_jam/halloween/index.html',
-        'web_jam/halloween/style.css',
-        'web_jam/halloween/js/*.js',
         'index.html',
         'style.css',
         '*.js',
