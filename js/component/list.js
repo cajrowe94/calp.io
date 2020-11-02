@@ -64,7 +64,6 @@ component.list.prototype.decorate = function(parent) {
     css.apply(text, {
       'display': 'block',
       'font-size': '15px',
-      // 'color': css.color('white', '300'),
       'transition': 'color .3s',
     });
 

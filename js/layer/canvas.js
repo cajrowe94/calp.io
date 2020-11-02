@@ -19,7 +19,10 @@ layer.canvas.prototype.decorate = function(parent) {
   });
 
   canvas.width = document.body.clientWidth;
+  this.width_ = canvas.width;
+
   canvas.height = document.body.clientHeight;
+  this.height_ = canvas.height;
 
   // send decorate_canvas the context
   this.decorate_canvas(canvas);
@@ -37,6 +40,14 @@ layer.canvas.prototype.decorate_canvas = function(ctx) {
 
 layer.canvas.prototype.get_context = function() {
   return this.ctx_;
+};
+
+layer.canvas.prototype.get_canvas_width = function() {
+  return this.width_;
+};
+
+layer.canvas.prototype.get_canvas_height = function() {
+  return this.height_;
 };
 
 layer.canvas.prototype.get_class = function(){

@@ -156,13 +156,13 @@ layer.projects.prototype.get_projects = function() {
       'link': 'https://calebrowe.work/wp-content/weather-app/index.html',
       'icon': 'computer',
     },
-    {
-      'title': 'Tech Talk',
-      'text': 'Fictional tech news subscription service',
-      'sleeve_image': 'img/tiles/tech_talk_tile.jpg',
-      'link': 'https://calebrowe.work/wp-content/TechNews/index.html',
-      'icon': 'computer',
-    },
+    // {
+    //   'title': 'Tech Talk',
+    //   'text': 'Fictional tech news subscription service',
+    //   'sleeve_image': 'img/tiles/tech_talk_tile.jpg',
+    //   'link': 'https://calebrowe.work/wp-content/TechNews/index.html',
+    //   'icon': 'computer',
+    // },
     {
       'title': 'Servo wave',
       'text': 'Using servo motors to emulate wavelike movement',

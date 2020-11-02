@@ -5,6 +5,7 @@ $.inherits(layer.home, layer);
 
 layer.home.prototype.decorate = function(parent) {
   // decorate tiles
+  new layer.canvas.grid().render(parent);
   this.decorate_links(parent);
   this.decorate_blocks(parent);
 };
@@ -14,7 +15,7 @@ layer.home.prototype.get_title = function() {
 };
 
 layer.home.prototype.get_sub_title = function() {
-  return 'I got a thing for web development and fiddling with electronics.';
+  return 'I like web development and fiddling with electronics.';
 };
 
 layer.home.prototype.decorate_links = function(parent){
