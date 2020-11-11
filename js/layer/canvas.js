@@ -6,6 +6,8 @@ layer.canvas = function(){
 $.inherits(layer.canvas, layer);
 
 layer.canvas.prototype.decorate = function(parent) {
+  console.log(window.timeout);
+  clearTimeout(window.timeout);
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
 

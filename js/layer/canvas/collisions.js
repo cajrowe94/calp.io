@@ -26,14 +26,16 @@ layer.canvas.collisions.prototype.decorate_canvas = function(parent) {
   });
 
   parent.addEventListener('mousemove', function(e) {
-    self.mouse.x = e.pageX || e.targetTouches[0].pageX;
-    self.mouse.y = e.pageY || e.targetTouches[0].pageY;
+    self.mouse.x = e.pageX;
+    self.mouse.y = e.pageY;
   });
 
   // animation
-  setInterval(function() {
+  var anim = setInterval(function() {
     self.animate();
   }, 10);
+
+  window.timeout = anim;
 };
 
 layer.canvas.collisions.prototype.animate = function() {
@@ -41,7 +43,7 @@ layer.canvas.collisions.prototype.animate = function() {
 
   c.clearRect(0, 0, parent.width, parent.height);
   c.globalAlpha = .9;
-  c.fillRect(0,0, parent.width, parent.height);
+  c.fillRect(0, 0, parent.width, parent.height);
   c.fillStyle = 'black';
   c.fill();
 
