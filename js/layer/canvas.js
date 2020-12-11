@@ -64,16 +64,15 @@ layer.canvas.prototype.calculate_distance = function(xin, yin, x2in, y2in) {
   var a = xin - x2in;
   var b = yin - y2in;
 
-  var d = Math.sqrt(a*a + b*b);
-  
+  var d = Math.sqrt(a * a + b * b);
+
   return d;
 };
 
 layer.canvas.prototype.get_random_int = function(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 layer.canvas.prototype.get_random_float = function(min, max){
   return Math.random() * (max - min) + min;
-}
-
+};
