@@ -7,21 +7,22 @@ const config = require('../../config.js');
 
 const SPOTIFY_CLIENT_ID = config.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = config.SPOTIFY_CLIENT_SECRET;
-const SPOTIFY_URI = config.SPOTIFY_URI;
+// const SPOTIFY_URI = config.SPOTIFY_URI;
 
-/** Init conn to mongo DB */
+// /** Init conn to mongo DB */
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = SPOTIFY_URI;
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = SPOTIFY_URI;
 
-const client = new MongoClient(uri, {
-  'useNewUrlParser': true,
-  'useUnifiedTopology': true,
-});
+// const client = new MongoClient(uri, {
+//   'useNewUrlParser': true,
+//   'useUnifiedTopology': true,
+// });
 
 class Spotify {
-  constructor(request) {
+  constructor(request, client) {
     this.request_ = request;
+    this.client = client;
   }
 
   get_request() {
@@ -33,7 +34,7 @@ class Spotify {
 
     try {
       // connect to our db
-      await client.connect();
+      // await client.connect();
 
       if (!req.method) { // no method sent
         return {
@@ -45,12 +46,12 @@ class Spotify {
         };
       }
       // try and fulfill the request
-      return await this[req.method](client);
+      return await this[req.method](this.client);
     } catch (e) {
       return e;
     } finally {
       // close the db connection
-      client.close();
+      // client.close();
     }
   }
 
@@ -66,9 +67,9 @@ class Spotify {
    * }
    *
    */
-  async read_streams(db_conn) {
+  async read_streams() {
     // init conn to db and collection
-    const db = db_conn.db('Spotify');
+    const db = this.client.db('Spotify');
     let collection = db.collection('stream');
 
     // get a query

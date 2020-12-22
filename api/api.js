@@ -1,3 +1,4 @@
+const config = require('../config.js');
 
 /* Initialize web server */
 
@@ -9,9 +10,29 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
+const URI = config.URI;
+let client;
+
+/** Init conn to mongo DB */
+
+const MongoClient = require('mongodb').MongoClient
+  .connect(URI, {'useUnifiedTopology': true}, function(err, db) {
+    if (err) {
+      throw err;
+    }
+
+    client = db;
+    console.log(client.db('Spotify'));
+
+    // start the server once we make a connection
+    app.listen(3000, () => {
+      console.log('Server running on port 3000');
+    });
+  });
+
+// app.listen(3000, () => {
+//   console.log('Server running on port 3000');
+// });
 
 
 /**
@@ -25,7 +46,7 @@ app.listen(3000, () => {
 const spotify = require('./class/spotify.js');
 
 const handle_spotify_request = async (req_body) => {
-  const spotify_handler = new spotify(req_body);
+  const spotify_handler = new spotify(req_body, client);
 
   try {
     let spotify_response =
