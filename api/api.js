@@ -2,10 +2,12 @@
 /* Initialize web server */
 
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 // we're parsing application/json
 app.use(express.json());
+app.use(cors());
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
@@ -36,11 +38,11 @@ const handle_spotify_request = async (req_body) => {
 };
 
 /**
- * GET entrypoint
+ * Main entrypoint
  * Calls the classes defined above
  */
 
-app.get('/api', async (request, response, next) => {
+app.post('/api', async (request, response, next) => {
   let req_body = {};
 
   if (

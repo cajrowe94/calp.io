@@ -42,7 +42,6 @@ forge.prototype.get_button_ = function(button_args) {
 forge.prototype.get_icon_ = function(icon_args) {
   var icon = document.createElement('img');
   icon.classList.add('icon');
-  var theme = '';
 
   if (
     icon_args &&
@@ -79,4 +78,24 @@ forge.prototype.get_blob_ = function(blob_args) {
 
 
   return blob;
+};
+
+/**
+ * Returns a gif
+ */
+forge.prototype.get_gif_ = function(icon_args) {
+  var gif = document.createElement('img');
+  gif.classList.add('gif');
+
+  if (
+    icon_args &&
+    icon_args.file_name
+  ) {
+    gif.setAttribute('src', 'img/gifs/' + icon_args.file_name + '.gif');
+  } else {
+    console.error('No icon name was given');
+    return;
+  }
+
+  return gif;
 };

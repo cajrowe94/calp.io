@@ -5,12 +5,6 @@ layer.prototype.state = {};
 
 layer.prototype.render = function(opt_parent){
   var root = document.getElementsByTagName('main')[0];
-  this.set_class(root);
-
-  // add to layer stack
-  // if (!opt_parent) {
-  //   layer_stack.push(this);
-  // }
 
   if (
     opt_parent &&
@@ -19,6 +13,7 @@ layer.prototype.render = function(opt_parent){
     this.decorate(opt_parent);
   } else { // otherwise render to <main>
     root.innerHTML = '';
+    this.set_class(root);
 
     css.apply(root, {
       'background-color': css.color('background'),
@@ -91,9 +86,6 @@ layer.prototype.set_class = function(container) {
   this.get_class().forEach(function(class_name){
     container.classList.add(class_name);
   });
-
-  // set the hash lcoation to the last entry
-  window.location.hash = this.get_class()[this.get_class().length - 1];
 };
 /**
  * Init function

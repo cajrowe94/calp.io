@@ -6,9 +6,9 @@ module.exports = function(grunt) {
 
   // project config
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    watch: {
-      files: [
+    'pkg': grunt.file.readJSON('package.json'),
+    'watch': {
+      'files': [
         'index.html',
         'style.css',
         '*.js',
@@ -16,12 +16,14 @@ module.exports = function(grunt) {
         'js/**/*.js',
         'js/**/**/*.js',
       ],
-      tasks: ['concat', 'uglify']
+      'tasks': ['concat', 'uglify'],
     },
-    concat: {
-      dist: {
-        src: [
-          'rocket/build/rocket.js',
+    'concat': {
+      'dist': {
+        'src': [
+          'lib/*.js',
+          'lib/rocket/build/rocket.js',
+          'js/api.js',
           'js/css.js',
           'js/forge.js',
           'index.js',
@@ -30,19 +32,19 @@ module.exports = function(grunt) {
           'js/layer/*.js',
           'js/layer/**/*.js',
           'js/component/*.js',
-          'js/component/**/*.js'
+          'js/component/**/*.js',
         ],
-        dest: 'build/concat.js',
+        'dest': 'build/concat.js',
       },
     },
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+    'uglify': {
+      'options': {
+        'banner': '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
       },
-      build: {
-        src: 'build/concat.js',
-        dest: 'build/concat.min.js'
-      }
+      'build': {
+        'src': 'build/concat.js',
+        'dest': 'build/concat.min.js',
+      },
     },
   });
 

@@ -103,8 +103,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'background': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'min-height': '100px',
-    'padding': '20px',
-    'border-radius': '20px',
+    'border-radius': '7px',
     'position': 'relative',
     'overflow': 'hidden',
   });
@@ -112,7 +111,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
 
 component.paper.prototype.apply_container_styles_ = function(container){
   css.apply(container, {
-    'max-width': '1000px',
+    'max-width': '1200px',
     'margin': '20px auto',
   });
 };

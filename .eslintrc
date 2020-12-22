@@ -17,6 +17,10 @@
     "component": true,
     "layer": true,
     "rocket": true,
+    "require": true,
+    "api": true,
+    "Highcharts": true,
+    "window": true,
   },
 
   # these only change each major release

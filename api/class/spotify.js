@@ -13,7 +13,11 @@ const SPOTIFY_URI = config.SPOTIFY_URI;
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = SPOTIFY_URI;
-const client = new MongoClient(uri, {'useNewUrlParser': true, 'useUnifiedTopology': true});
+
+const client = new MongoClient(uri, {
+  'useNewUrlParser': true,
+  'useUnifiedTopology': true,
+});
 
 class Spotify {
   constructor(request) {
