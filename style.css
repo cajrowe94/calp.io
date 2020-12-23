@@ -9,6 +9,7 @@
 html {
   min-width: 350px;
   overflow: hidden;
+  background-color: #0B0C10;
 }
 
 .layer::-webkit-scrollbar {

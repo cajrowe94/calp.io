@@ -62,12 +62,12 @@ component.tile.prototype.decorate = function(parent) {
 
   var sleeve_background = {};
 
+  var overlay = document.createElement('div');
+
   if (
     this.options_ &&
     this.options_.sleeve_image
   ) {
-    var overlay = document.createElement('div');
-
     css.apply(overlay, {
       'position': 'absolute',
       'top': '0',
@@ -84,6 +84,9 @@ component.tile.prototype.decorate = function(parent) {
     sleeve_background['background-repeat'] = 'no-repeat';
     sleeve_background['background-position'] = 'center';
     sleeve_background['background-size'] = 'cover';
+  } else if (this.options_.background_color) {
+    sleeve_background.background = this.options_.background_color;
+    sleeve_background['backdrop-filter'] = 'blur(7px)';
   } else {
     sleeve_background.background = css.color('background_secondary_alpha');
     sleeve_background['backdrop-filter'] = 'blur(7px)';
@@ -116,7 +119,7 @@ component.tile.prototype.decorate = function(parent) {
     });
 
     css.apply(icon_sleeve, {
-      'width': 'auto',
+      'width': '50px',
       'padding-left': '20px',
     });
 
@@ -125,7 +128,6 @@ component.tile.prototype.decorate = function(parent) {
     });
 
     css.apply(icon_main, {
-      'height': '35px',
       'position': 'absolute',
       'bottom': '5px',
       'right': '5px',
@@ -135,7 +137,6 @@ component.tile.prototype.decorate = function(parent) {
     main_container.appendChild(icon_main);
   }
 
-  // add an icon if passed in
   if (
     this.options_ &&
     this.options_.text
@@ -166,6 +167,7 @@ component.tile.prototype.decorate = function(parent) {
       'padding-left': '10px',
       'overflow': 'hidden',
       'font-weight': '300',
+      'color': this.options_.title_color,
     });
 
     sleeve_container.appendChild(title);

@@ -1,5 +1,10 @@
-layer.canvas.grid = function(){
+layer.canvas.grid = function(args){
   this.lines = [];
+
+  this.is_background = (
+    args &&
+    args.background
+  );
 
   this.mouse = {
     'x': undefined,

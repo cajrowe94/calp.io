@@ -6,7 +6,6 @@ layer.canvas = function(){
 $.inherits(layer.canvas, layer);
 
 layer.canvas.prototype.decorate = function(parent) {
-  console.log(window.timeout);
   clearTimeout(window.timeout);
   var canvas = document.createElement('canvas');
   var ctx = canvas.getContext('2d');
@@ -18,6 +17,7 @@ layer.canvas.prototype.decorate = function(parent) {
     'top': '0',
     'left': '0',
     'overflow': 'hidden',
+    'z-index': this.is_background ? '-1' : null,
   });
 
   canvas.width = document.body.clientWidth;

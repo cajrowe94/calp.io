@@ -4,6 +4,7 @@ layer.about = function(){
 $.inherits(layer.about, layer);
 
 layer.about.prototype.decorate = function(parent) {
+  new layer.canvas.grid().render(parent);
   var container = document.createElement('div');
 
   css.apply(container, {
@@ -39,11 +40,11 @@ layer.about.prototype.decorate = function(parent) {
     ' a steep canyon wall is something you just don\'t get very often in life. I try and take every opportunity I can to' +
     ' go somewhere new with people I love; life comes and goes very quickly and I never want to have any regrets once I\'m' +
     ' an old man. :)' +
-    '\n\nHope you like the website! It\'s a single page application, which there\'s only one html file, and javascript does the rest. I built this without' +
+    '\n\nHope you like the website! It\'s a single page application, which means there\'s only one html file, and javascript does all the magic. I built this without' +
     ' any frameworks or libraries, just plain ole vanilla javascript. I still used a couple libraries here and there for fun stuff,' +
     ' but the framework it runs on was built by yours truly.' +
     '\n\nThanks for visiting my little corner of the web!' +
-    '\n- Caleb (Calp)';
+    '\n- Caleb';
 
   css.apply(intro, {
     'margin-bottom': '50px',

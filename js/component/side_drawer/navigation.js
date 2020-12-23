@@ -105,14 +105,14 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
         new layer.about().render();
       }),
     },
-    {
-      'name': 'Sentence Generator',
-      'icon': 'message',
-      'action': (function() {
-        self.hide();
-        new layer.sentence_generator().render();
-      }),
-    },
+    // {
+    //   'name': 'Sentence Generator',
+    //   'icon': 'message',
+    //   'action': (function() {
+    //     self.hide();
+    //     new layer.sentence_generator().render();
+    //   }),
+    // },
     {
       'name': 'Canvas',
       'icon': 'brush',
@@ -123,7 +123,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
     },
     {
       'name': 'Spotify streams',
-      'icon': 'music',
+      'icon': 'bar_chart',
       'action': (function() {
         self.hide();
         new layer.spotify().render();
@@ -143,7 +143,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
     'display': 'flex',
     'flex-direction': 'column',
     'position': 'absolute',
-    'bottom': '5px',
+    'bottom': '20px',
     'left': '8px',
   });
 

@@ -8,6 +8,7 @@ layer.home.prototype.decorate = function(parent) {
   new layer.canvas.grid().render(parent);
   this.decorate_links(parent);
   this.decorate_blocks(parent);
+  this.decorate_extra(parent);
 };
 
 layer.home.prototype.get_title = function() {
@@ -82,6 +83,24 @@ layer.home.prototype.decorate_blocks = function(parent){
   });
 
   grid.add_cell(drone_block);
+
+  grid.render(parent);
+};
+
+layer.home.prototype.decorate_extra = function(parent){
+  var grid = new component.grid();
+
+  var spotify_tile = new component.tile({
+    'title': '2020 Spotify stream data',
+    'icon': 'bar_chart',
+    'text': 'I downloaded my 2020 Spotify stream data and made some cool charts.',
+    'sleeve_image': 'img/tiles/spotify_tile.png',
+    'click': function() {
+      new layer.spotify().render();
+    },
+  });
+
+  grid.add_cell(spotify_tile);
 
   grid.render(parent);
 };

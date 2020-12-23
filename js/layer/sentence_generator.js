@@ -4,6 +4,7 @@ layer.sentence_generator = function(){
 $.inherits(layer.sentence_generator, layer);
 
 layer.sentence_generator.prototype.decorate = function(parent) {
+  new layer.canvas.grid().render(parent);
   var self = this;
   this.inputs_ = {};
 

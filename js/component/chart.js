@@ -20,6 +20,7 @@ component.chart.prototype.decorate = function(parent) {
   default_options.xAxis = this.get_options_xAxis();
   default_options.yAxis = this.get_options_yAxis();
   default_options.tooltip = this.get_options_tooltip();
+  default_options.time = this.get_options_time();
   default_options.legend = this.get_options_legend();
   default_options.chart.renderTo = parent;
 
@@ -42,6 +43,7 @@ component.chart.prototype.get_options_chart = function() {
     'backgroundColor': 'transparent',
     'type': this.get_chart_type(),
     'spacing': this.get_options_spacing(),
+    'zoomType': 'x',
   };
 };
 
@@ -62,16 +64,22 @@ component.chart.prototype.get_options_plotOptions = function() {
     'area': {
       'fillOpacity': 0.15,
     },
-    'spline': {
-      'lineWidth': 1,
-    },
     'series': {
+      'lineWidth': 1,
       'marker': {
         'radius': 0,
         'symbol': 'circle',
       },
       'tooltip': {
         // 'pointFormatter': this.get_options_plotOptions_pointFormatter(),
+      },
+      'states': {
+        'hover': {
+          'lineWidth': 1,
+        },
+        'inactive': {
+          'enabled': false,
+        },
       },
     },
   };
@@ -114,7 +122,16 @@ component.chart.prototype.get_options_xAxis = function() {
 component.chart.prototype.get_options_yAxis = function() {
   return {
     'gridLineWidth': 0.3,
-    'gridLineColor': '#C5C6C7',
+    'gridLineColor': 'rgba(197, 198, 199)',
+  };
+};
+
+/**
+ * https://api.highcharts.com/highcharts/time
+ */
+component.chart.prototype.get_options_time = function() {
+  return {
+    'useUTC': false,
   };
 };
 
@@ -146,35 +163,30 @@ component.chart.prototype.get_options_tooltip = function() {
 /**
  * https://api.highcharts.com/highcharts/tooltip.formatter
  */
+// https://api.highcharts.com/highcharts/xAxis.dateTimeLabelFormats
+// https://api.highcharts.com/highcharts/tooltip.dateTimeLabelFormats.day
+// https://stackoverflow.com/questions/7101464/how-to-get-highcharts-dates-in-the-x-axis
+// f u highcharts documentation, took me forever to find this
+/*
+%a: Short weekday, like 'Mon'.
+%A: Long weekday, like 'Monday'.
+%d: Two digit day of the month, 01 to 31.
+%e: Day of the month, 1 through 31.
+%b: Short month, like 'Jan'.
+%B: Long month, like 'January'.
+%m: Two digit month number, 01 through 12.
+%y: Two digits year, like 09 for 2009.
+%Y: Four digits year, like 2009.
+%H: Two digits hours in 24h format, 00 through 23.
+%I: Two digits hours in 12h format, 00 through 11.
+%l (Lower case L): Hours in 12h format, 1 through 11.
+%M: Two digits minutes, 00 through 59.
+%p: Upper case AM or PM.
+%P: Lower case AM or PM.
+%S: Two digits seconds, 00 through 59
+ */
 component.chart.prototype.get_options_tooltip_formatter = function() {
-  var convert_to_minutes = function(seconds) {
-    var data = {};
-    var time = (seconds / 60).toFixed(2);
-
-    data.hours = Math.floor(time);
-    data.minutes = (seconds % 60);
-
-    return data;
-  };
-
-  return function() {
-    return this.points.reduce(function(s, point) {
-      var time_data = convert_to_minutes(point.y);
-
-      return s +
-        '<tr><td style="white-space: nowrap; font-size: 12px; color: #C5C6C7;">' +
-          '<div style="display: inline-block; border-left: 2px solid ' + point.series.color +
-            '; width: 10px; height: 10px;">' +
-          '</div>' +
-          point.series.name +
-        ' </td>' +
-        '<td style="padding: 2px 0px 5px 20px; white-space: nowrap; text-align: right; font-size: 12px; color: #C5C6C7;">' +
-          time_data.hours + 'h ' + time_data.minutes + 'm' +
-        '</td></tr>';
-    }, '<span style="font-size: 16px;">' +
-          Highcharts.dateFormat('%b %Y', this.x) +
-        '</span><table>');
-  };
+  return null;
 };
 
 /**

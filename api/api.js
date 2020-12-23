@@ -22,7 +22,6 @@ const MongoClient = require('mongodb').MongoClient
     }
 
     client = db;
-    console.log(client.db('Spotify'));
 
     // start the server once we make a connection
     app.listen(3000, () => {
