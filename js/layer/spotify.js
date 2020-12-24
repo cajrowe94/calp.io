@@ -31,6 +31,7 @@ layer.spotify.prototype.decorate = function(parent) {
     window.data.spotify
   ) {
     this.decorate_top_three_artists_songs(parent);
+    // this.decorate_full_streaming_history(parent);
   }
 };
 
@@ -49,6 +50,16 @@ layer.spotify.prototype.get_spotify_data = function() {
   );
 };
 
+layer.spotify.prototype.format_time = function(seconds) {
+  var data = {};
+  var minutes = (seconds / 60).toFixed(2);
+
+  data.hours = Math.floor(minutes / 60);
+  data.minutes = (seconds % 60);
+
+  return data;
+};
+
 layer.spotify.prototype.decorate_top_three_artists = function(parent) {
   var paper = new component.paper({
     'title': 'Top 3 artists',
@@ -56,21 +67,15 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
 
   var container = paper.get_container();
 
-  // var format_time = function(seconds) {
-  //   var data = {};
-  //   var time = (seconds / 60).toFixed(2);
-
-  //   data.hours = Math.floor(time / 60);
-  //   data.minutes = (seconds % 60);
-
-  //   return data;
-  // };
-
   css.apply(container, {
-    'height': '575px',
+    'height': '600px',
   });
 
-  // var chart_container = document.createElement('div');
+  var chart_container = document.createElement('div');
+
+  css.apply(chart_container, {
+    'height': '450px',
+  });
 
   if (
     this.loading === false ||
@@ -78,34 +83,39 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
   ) {
     var series_data = this.get_top_three_artists_series();
 
-    // var top_three_artists = document.createElement('h3');
+    var top_three_artists = document.createElement('h4');
 
-    // var conversion = format_time(this.top_three_artists[0].total_seconds);
+    css.apply(top_three_artists, {
+      'font-weight': '100',
+      'padding': '10px 0px 30px 0px',
+    });
 
-    // top_three_artists.innerHTML = '1. ' +
-    //   this.top_three_artists[0].artist +
-    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+    var conversion = this.format_time(this.top_three_artists[0].total_seconds);
 
-    // conversion = format_time(this.top_three_artists[1].total_seconds);
+    top_three_artists.innerHTML = '1. ' +
+      this.top_three_artists[0].artist +
+      ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
 
-    // top_three_artists.innerHTML += '2. ' +
-    //   this.top_three_artists[1].artist +
-    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+    conversion = this.format_time(this.top_three_artists[1].total_seconds);
 
-    // conversion = format_time(this.top_three_artists[2].total_seconds);
+    top_three_artists.innerHTML += '2. ' +
+      this.top_three_artists[1].artist +
+      ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
 
-    // top_three_artists.innerHTML += '3. ' +
-    //   this.top_three_artists[2].artist +
-    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+    conversion = this.format_time(this.top_three_artists[2].total_seconds);
 
-    // container.appendChild(top_three_artists);
+    top_three_artists.innerHTML += '3. ' +
+      this.top_three_artists[2].artist +
+      ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+    container.appendChild(top_three_artists);
 
     new component.chart.spotify({
       'series': series_data.series,
       'interval': 'monthly',
-    }).render(container);
+    }).render(chart_container);
 
-    // container.appendChild(chart_container);
+    container.appendChild(chart_container);
   } else {
     // loader
     new component.loading_overlay().render(container);
@@ -285,58 +295,73 @@ layer.spotify.prototype.get_top_three_artists_series = function() {
 };
 
 layer.spotify.prototype.decorate_top_three_artists_songs = function(parent) {
+  var self = this;
   var top_three = this.top_three_artists;
   var top_songs = this.get_top_three_songs();
 
-  // numero uno artist
-  var paper_first = new component.paper({
-    'title': '#1 ' + top_three[0].artist + ' - Top 3 songs',
+  var num = 1;
+
+  top_three.forEach(function(top_artist) {
+    self.decorate_top_songs_paper(top_artist, top_songs[top_artist.artist], num, parent);
+    num++;
   });
-  var container_first = paper_first.get_container();
+};
+
+layer.spotify.prototype.decorate_top_songs_paper = function(artist, top_songs, place, parent) {
+  var paper = new component.paper({
+    'title': '#' + place + ' ' + artist.artist + ' - Top 3 songs',
+  });
+  var paper_container = paper.get_container();
+
+  var top_three_songs = document.createElement('h4');
+
+  css.apply(top_three_songs, {
+    'font-weight': '100',
+    'padding': '10px 0px 20px 0px',
+  });
+
+  var conversion = this.format_time(top_songs.top_three[0].total_seconds);
+
+  top_three_songs.innerHTML = '1. ' +
+    top_songs.top_three[0].song +
+    ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+  conversion = this.format_time(top_songs.top_three[1].total_seconds);
+
+  top_three_songs.innerHTML += '2. ' +
+    top_songs.top_three[1].song +
+    ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+  conversion = this.format_time(top_songs.top_three[2].total_seconds);
+
+  top_three_songs.innerHTML += '3. ' +
+    top_songs.top_three[2].song +
+    ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+  paper_container.appendChild(top_three_songs);
+
+  var chart_container = document.createElement('div');
+
+  css.apply(chart_container, {
+    'height': '440px',
+  });
+
+  css.apply(paper_container, {
+    'height': '600px',
+  });
 
   new component.chart.spotify({
-    'series': top_songs[top_three[0].artist].series,
+    'series': top_songs.series,
     'interval': 'daily',
-  }).render(container_first);
+  }).render(chart_container);
 
-  css.apply(container_first, {
+  css.apply(paper_container, {
     'height': '575px',
   });
 
-  // numero dos artist
-  var paper_second = new component.paper({
-    'title': '#2 ' + top_three[1].artist + ' - Top 3 songs',
-  });
-  var container_second = paper_second.get_container();
+  paper_container.appendChild(chart_container);
 
-  new component.chart.spotify({
-    'series': top_songs[top_three[1].artist].series,
-    'interval': 'daily',
-  }).render(container_second);
-
-  css.apply(container_second, {
-    'height': '575px',
-  });
-
-  // numero tres artist
-  var paper_third = new component.paper({
-    'title': '#3 ' + top_three[2].artist + ' - Top 3 songs',
-  });
-  var container_third = paper_third.get_container();
-
-  new component.chart.spotify({
-    'series': top_songs[top_three[2].artist].series,
-    'interval': 'daily',
-  }).render(container_third);
-
-  css.apply(container_third, {
-    'height': '575px',
-  });
-
-
-  paper_first.render(parent);
-  paper_second.render(parent);
-  paper_third.render(parent);
+  paper.render(parent);
 };
 
 layer.spotify.prototype.get_top_three_songs = function() {
@@ -530,3 +555,48 @@ layer.spotify.prototype.get_top_three_song_series = function(top_three) {
 
   return series;
 };
+
+/*
+// not really a fan of this
+layer.spotify.prototype.decorate_full_streaming_history = function(parent) {
+  var self = this;
+
+  var paper = new component.paper({
+    'title': 'All artists',
+  });
+  var paper_container = paper.get_container();
+
+  var all_streams = $.clone(this.all_streams);
+
+  var sorted = $.keys(all_streams).sort(function(a, b) {
+    return (all_streams[b].total_seconds - all_streams[a].total_seconds);
+  });
+
+  var place = 1;
+
+  sorted.forEach(function(artist) {
+    var artist_header = document.createElement('h3');
+
+    css.apply(artist_header, {
+      'font-weight': '100',
+      'padding': '10px 0px 20px 0px',
+    });
+
+    var conversion = self.format_time(all_streams[artist].total_seconds);
+
+    artist_header.innerHTML = place + '. ' +
+      artist +
+      ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+    if (
+      conversion.hours ||
+      conversion.minutes
+    ) {
+      paper_container.appendChild(artist_header);
+      place++;
+    }
+  });
+
+  paper.render(parent);
+};
+*/
