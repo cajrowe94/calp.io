@@ -56,9 +56,21 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
 
   var container = paper.get_container();
 
+  // var format_time = function(seconds) {
+  //   var data = {};
+  //   var time = (seconds / 60).toFixed(2);
+
+  //   data.hours = Math.floor(time / 60);
+  //   data.minutes = (seconds % 60);
+
+  //   return data;
+  // };
+
   css.apply(container, {
     'height': '575px',
   });
+
+  // var chart_container = document.createElement('div');
 
   if (
     this.loading === false ||
@@ -66,10 +78,34 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
   ) {
     var series_data = this.get_top_three_artists_series();
 
+    // var top_three_artists = document.createElement('h3');
+
+    // var conversion = format_time(this.top_three_artists[0].total_seconds);
+
+    // top_three_artists.innerHTML = '1. ' +
+    //   this.top_three_artists[0].artist +
+    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+    // conversion = format_time(this.top_three_artists[1].total_seconds);
+
+    // top_three_artists.innerHTML += '2. ' +
+    //   this.top_three_artists[1].artist +
+    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+    // conversion = format_time(this.top_three_artists[2].total_seconds);
+
+    // top_three_artists.innerHTML += '3. ' +
+    //   this.top_three_artists[2].artist +
+    //   ' - ' + conversion.hours + 'h ' + conversion.minutes + 'm<br>';
+
+    // container.appendChild(top_three_artists);
+
     new component.chart.spotify({
       'series': series_data.series,
       'interval': 'monthly',
     }).render(container);
+
+    // container.appendChild(chart_container);
   } else {
     // loader
     new component.loading_overlay().render(container);
@@ -172,8 +208,6 @@ layer.spotify.prototype.get_top_three_artists_series = function() {
 
     var running_date_month = running_date.get_month();
     var running_date_ms = running_date.get_date_ms();
-
-    console.log('initial', running_date_month);
 
     var running_month_total = 0;
 
@@ -412,8 +446,8 @@ layer.spotify.prototype.get_top_three_song_series = function(top_three) {
     var running_month_total = 0;
 
     for (var i = 0; i < song_streams.length; i++) {
-      var current_day = new component.date(song_streams[i].endTime)
-        .get_day_of_month();
+      var current = new component.date(song_streams[i].endTime);
+      var current_day = current.get_day_of_month();
 
       if (current_day !== running_date_day) {
         // reset and add to series
@@ -423,36 +457,55 @@ layer.spotify.prototype.get_top_three_song_series = function(top_three) {
         var temp;
 
         if (
-          current_day < running_date_day &&
-          running_date_day - current_day > 1
+          (current_day < running_date_day &&
+            running_date_day - current_day > 1) ||
+          running_date.get_month() !== current.get_month() ||
+          running_date.get_year() !== current.get_year()
         ) {
           temp = new component.date(running_date_ms);
           temp.set_day_of_month(temp.get_day_of_month() + 1);
 
-          series_.data.push([temp.get_date_ms(), 0]);
+          if (temp.get_day_of_month() !== current_day) {
+            series_.data.push([temp.get_date_ms(), 0]);
+          }
 
           while (
+            current.get_year() !== temp.get_year() ||
+            current.get_month() !== temp.get_month() ||
             temp.get_day_of_month() > current_day ||
             current_day - temp.get_day_of_month() > 1
           ) {
             temp.set_day_of_month(temp.get_day_of_month() + 1);
-            series_.data.push([temp.get_date_ms(), 0]);
+            if (temp.get_day_of_month() !== current_day) {
+              series_.data.push([temp.get_date_ms(), 0]);
+            }
           }
         } else if (
-          current_day > running_date_day &&
-          current_day - running_date_day > 1
+          (current_day > running_date_day &&
+            current_day - running_date_day > 1) ||
+          running_date.get_month() !== current.get_month() ||
+          running_date.get_year() !== current.get_year()
         ) {
           temp = new component.date(running_date_ms);
           temp.set_day_of_month(temp.get_day_of_month() + 1);
 
-          series_.data.push([temp.get_date_ms(), 0]);
-
-          while (current_day - temp.get_day_of_month() > 1) {
-            temp.set_day_of_month(temp.get_day_of_month() + 1);
+          if (temp.get_day_of_month() !== current_day) {
             series_.data.push([temp.get_date_ms(), 0]);
+          }
+
+          while (
+            current.get_year() !== temp.get_year() ||
+            current.get_month() !== temp.get_month() ||
+            current_day - temp.get_day_of_month() > 1
+          ) {
+            temp.set_day_of_month(temp.get_day_of_month() + 1);
+            if (temp.get_day_of_month() !== current_day) {
+              series_.data.push([temp.get_date_ms(), 0]);
+            }
           }
         }
 
+        // reset running date
         running_date.set_date(song_streams[i].endTime);
 
         running_date.zero_time();

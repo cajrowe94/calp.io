@@ -101,7 +101,7 @@
     "line-comment-position": "off",
     "linebreak-style": "off",
     "lines-around-comment": "off",
-    "max-depth": ["error", {"max": 4}],
+    "max-depth": ["error", {"max": 6}],
     "max-len": ["warn", {"code": 100,"tabWidth": 2,"ignoreUrls": true,"ignoreStrings": false,"ignoreRegExpLiterals": true,"ignorePattern": "^(layer|component)\\.(.*)\\.prototype\\..*? = function\\("}],
     "max-lines": ["warn", {"max": 1000, "skipBlankLines": true, "skipComments": true}],
     "max-nested-callbacks": ["error", {"max": 3}],

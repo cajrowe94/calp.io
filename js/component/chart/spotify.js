@@ -47,12 +47,11 @@ component.chart.spotify.prototype.get_chart_type = function() {
 component.chart.spotify.prototype.get_options_tooltip_formatter = function() {
   var self = this;
 
-  var convert_to_minutes = function(seconds) {
+  var format_time = function(minutes) {
     var data = {};
-    var time = (seconds / 60).toFixed(2);
 
-    data.hours = Math.floor(time);
-    data.minutes = (seconds % 60);
+    data.hours = Math.floor(minutes / 60);
+    data.minutes = (minutes % 60);
 
     return data;
   };
@@ -76,7 +75,7 @@ component.chart.spotify.prototype.get_options_tooltip_formatter = function() {
 
   return function() {
     return this.points.reduce(function(s, point) {
-      var time_data = convert_to_minutes(point.y);
+      var time_data = format_time(point.y);
 
       return s +
         '<tr><td style="white-space: nowrap; font-size: 12px; color: #C5C6C7;">' +
