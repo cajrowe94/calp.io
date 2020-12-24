@@ -4,7 +4,10 @@ layer.projects = function(){
 $.inherits(layer.projects, layer);
 
 layer.projects.prototype.decorate = function(parent) {
-  new layer.canvas.grid().render(parent);
+  new layer.canvas.grid({
+    'background': true,
+  }).render(parent);
+
   this.decorate_tiles(parent);
 };
 

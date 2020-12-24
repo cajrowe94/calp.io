@@ -9,7 +9,10 @@ layer.blog_home = function(){
 $.inherits(layer.blog_home, layer);
 
 layer.blog_home.prototype.decorate = function(parent) {
-  new layer.canvas.grid().render(parent);
+  new layer.canvas.grid({
+    'background': true,
+  }).render(parent);
+
   this.decorate_tiles(parent);
 };
 

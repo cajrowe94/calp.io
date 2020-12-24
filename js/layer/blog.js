@@ -4,7 +4,10 @@ layer.blog = function(){
 $.inherits(layer.blog, layer);
 
 layer.blog.prototype.decorate = function(parent) {
-  new layer.canvas.grid().render(parent);
+  new layer.canvas.grid({
+    'background': true,
+  }).render(parent);
+
   var container = document.createElement('div');
 
   css.apply(container, {
