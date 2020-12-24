@@ -12,7 +12,7 @@ var api = function(class_, method_, arguments_, callback_){
     body.method = method_;
     body.class = class_;
 
-    fetch('http://localhost:3000/api', {
+    fetch('http://calp.io:3000/api', {
       'method': 'POST',
       'headers': {
         'Content-Type': 'application/json',

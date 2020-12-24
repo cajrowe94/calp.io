@@ -4,11 +4,15 @@ const config = require('../config.js');
 
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
+const helmet = require('helmet');
 const app = express();
 
-// we're parsing application/json
+
+app.use(compression());
+app.use(helmet());
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 const URI = config.URI;
 let client;
