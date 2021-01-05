@@ -12,7 +12,7 @@ component.terminal.prototype.decorate = function(parent) {
 
   css.apply(container, {
     'position': 'absolute',
-    'bottom': '-27px',
+    'bottom': '-35px',
     'right': '0',
     'transition': 'bottom .1s',
     'height': '35px',
@@ -33,7 +33,7 @@ component.terminal.prototype.decorate = function(parent) {
     ) {
       if (self.visible) {
         css.apply(container, {
-          'bottom': '-27px',
+          'bottom': '-35px',
         });
       } else {
         css.apply(container, {
