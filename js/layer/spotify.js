@@ -30,7 +30,7 @@ layer.spotify.prototype.decorate = function(parent) {
     this.loading === false ||
     window.data.spotify
   ) {
-    // this.decorate_top_three_artists_songs(parent);
+    this.decorate_top_three_artists_songs(parent);
     // this.decorate_full_streaming_history(parent);
   }
 };
