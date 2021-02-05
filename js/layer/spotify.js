@@ -43,7 +43,6 @@ layer.spotify.prototype.get_spotify_data = function() {
     'read_streams',
     {},
     function(data) {
-      console.log(data);
       self.loading = false;
       window.data.spotify = data;
       self.render();
@@ -350,8 +349,6 @@ layer.spotify.prototype.decorate_top_songs_paper = function(artist, top_songs, p
   css.apply(paper_container, {
     'height': '600px',
   });
-
-  console.log(top_songs);
 
   // new component.chart.spotify({
   //   'series': top_songs.series,
