@@ -12,7 +12,7 @@ const app = express();
 app.use(compression());
 app.use(helmet());
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 const URI = config.URI;
 let client;
