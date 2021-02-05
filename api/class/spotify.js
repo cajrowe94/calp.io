@@ -82,6 +82,7 @@ class Spotify {
       await collection.find(
         query ? query : {}
       )
+        .sort({'endTime': 1})
         .toArray()
         .then(items => {
           documents = items;
