@@ -350,10 +350,10 @@ layer.spotify.prototype.decorate_top_songs_paper = function(artist, top_songs, p
     'height': '600px',
   });
 
-  // new component.chart.spotify({
-  //   'series': top_songs.series,
-  //   'interval': 'daily',
-  // }).render(chart_container);
+  new component.chart.spotify({
+    'series': top_songs.series,
+    'interval': 'daily',
+  }).render(chart_container);
 
   css.apply(paper_container, {
     'height': '575px',
