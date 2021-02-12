@@ -87,10 +87,16 @@ layer.prototype.set_class = function(container) {
     container.classList.add(class_name);
   });
 };
+
 /**
  * Init function
  * Used to initiatilize variables before rendering
  */
+
 layer.prototype.init = function() {
   console.warn('overwrite this.init()');
+};
+
+layer.prototype.get_random_int = function(opt_max) {
+  return Math.floor(Math.random() * Math.floor(opt_max || 100));
 };

@@ -33,9 +33,6 @@ class Spotify {
     var req = this.get_request();
 
     try {
-      // connect to our db
-      // await client.connect();
-
       if (!req.method) { // no method sent
         return {
           'message': 'Error: method parameter not found.',
@@ -50,8 +47,7 @@ class Spotify {
     } catch (e) {
       return e;
     } finally {
-      // close the db connection
-      // client.close();
+      // nada
     }
   }
 

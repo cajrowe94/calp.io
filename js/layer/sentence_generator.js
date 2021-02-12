@@ -13,7 +13,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
 
   var paper = new component.paper({
     'title': 'Sentence generator',
-    'header': 'Type a letter and length to use, or check random for either',
+    'header': 'Type a letter you want to use or select random.',
     'buttons': {
       'left': {
         'text': 'Clear',
@@ -60,19 +60,96 @@ layer.sentence_generator.prototype.decorate = function(parent) {
     // clear it out after each click
     sentence_container.innerHTML = '';
 
-    self.show_sentence_(sentence_container); // build a sentence
-
     css.apply(sentence_container, {
       'height': '75px',
       'opacity': '100',
     });
+
+    if (
+      self.inputs_ &&
+      (
+        self.inputs_.letter ||
+        self.inputs_.letter_random
+      )
+    ) {
+      new component.loading_overlay().render(sentence_container);
+
+      self.sentence = ['adjective', 'noun', 'verb', 'adjective', 'noun'];
+      var len = self.sentence.length;
+      var i = 0;
+
+      var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+      var random_letter = alphabet[self.get_random_int(alphabet.length)];
+
+      self.sentence.forEach(function(pos) {
+        var letter;
+
+        if (self.inputs_.letter_random) {
+          letter = random_letter;
+        } else {
+          letter = self.inputs_.letter.toLowerCase();
+        }
+
+        api(
+          'words',
+          'search_word',
+          {
+            'filter': {
+              'letterPattern': '^' + letter,
+              'partOfSpeech': pos,
+              // 'lettersMin': self.get_random_int(8) + 1,
+              'page': self.get_random_int(2) + 1,
+            },
+          },
+          function(res) {
+            i++;
+
+            if (
+              res.results &&
+              res.results.data &&
+              res.results.data.length
+            ) {
+              var word = res.results.data[self.get_random_int(res.results.data.length)];
+              var pos_replace = self.sentence[self.sentence.indexOf(pos)];
+
+              self.sentence[self.sentence.indexOf(pos)] =
+                (word.charAt(0).toUpperCase() + word.slice(1)) +
+                (pos_replace === 'verb' ? 's' : '');
+            }
+
+            if (i === len) {
+              self.show_sentence_(sentence_container); // build a sentence
+            }
+          }
+        );
+      });
+    } else {
+      var sentence = document.createElement('p');
+
+      sentence.innerText = 'Please input a letter.';
+
+      css.apply(sentence, {
+        'line-height': '75px',
+      });
+
+      sentence_container.appendChild(sentence);
+    }
   });
 
   // letter input
   var letter = new component.input.text({
     'label': 'What letter?',
     'update': function() {
-      self.inputs_.letter = letter.value;
+      if (
+        letter.value &&
+        letter.value.length
+      ) {
+        self.inputs_.letter = letter.value.charAt(0);
+      } else {
+        self.inputs_.letter = null;
+      }
     },
   });
   letter.render(container);
@@ -81,7 +158,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
   var letter_random = new component.input.check_box({
     'label': 'Random letter',
     'click': function() {
-      self.inputs_.random_letter = letter_random.checked;
+      self.inputs_.letter_random = letter_random.checked;
     },
   });
   letter_random.render(container);
@@ -93,7 +170,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
       self.inputs_.word_length = word_length.value;
     },
   });
-  word_length.render(container);
+  // word_length.render(container);
 
   // random word length input
   var word_length_random = new component.input.check_box({
@@ -102,18 +179,17 @@ layer.sentence_generator.prototype.decorate = function(parent) {
       self.inputs_.random_length = word_length_random.checked;
     },
   });
-  word_length_random.render(container);
+  // word_length_random.render(container);
 
   paper.render(parent);
 };
 
 layer.sentence_generator.prototype.show_sentence_ = function(parent){
   if (this.inputs_) {
+    parent.innerHTML = '';
     var sentence = document.createElement('p');
 
-    var response_data = this.get_word_data_();
-
-    sentence.innerText = 'This is a sample sentence';
+    sentence.innerText = this.sentence.join(' ');
 
     css.apply(sentence, {
       'line-height': '75px',
@@ -121,12 +197,6 @@ layer.sentence_generator.prototype.show_sentence_ = function(parent){
 
     parent.appendChild(sentence);
   }
-};
-
-layer.sentence_generator.prototype.get_word_data_ = function(parent){
-  var word_data = {};
-
-  $.XMLHttpRequest('https://api.datamuse.com/words?ml=ringing+in+the+ears');
 };
 
 layer.sentence_generator.prototype.get_class = function(){

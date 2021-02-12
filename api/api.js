@@ -33,11 +33,6 @@ const MongoClient = require('mongodb').MongoClient
     });
   });
 
-// app.listen(3000, () => {
-//   console.log('Server running on port 3000');
-// });
-
-
 /**
  * API classes/handlers
  * These are hardcoded right now.
@@ -56,6 +51,22 @@ const handle_spotify_request = async (req_body) => {
       await spotify_handler.handle_request();
 
     return spotify_response;
+  } catch (e) {
+    return JSON.stringify(e);
+  }
+};
+
+/* WordsAPI */
+const words = require('./class/words.js');
+
+const handle_words_request = async (req_body) => {
+  const words_handler = new words(req_body);
+
+  try {
+    let words_response =
+      await words_handler.handle_request();
+
+    return words_response;
   } catch (e) {
     return JSON.stringify(e);
   }
@@ -82,6 +93,9 @@ app.post('/api', async (request, response, next) => {
     switch (req_body.class) {
       case 'spotify':
         request_response = await handle_spotify_request(req_body);
+        break;
+      case 'words':
+        request_response = await handle_words_request(req_body);
         break;
       default:
         response.json({

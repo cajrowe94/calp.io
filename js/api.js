@@ -2,17 +2,16 @@
 var api = function(class_, method_, arguments_, callback_){
   if (
     !class_ ||
-    !method_ ||
-    !arguments_
+    !method_
   ) {
-    console.error('api() requires a class, method, and arguments');
+    console.error('api() requires a class and method');
   } else {
-    var body = arguments_;
+    var body = arguments_ || {};
 
     body.method = method_;
     body.class = class_;
 
-    fetch('http://calp.io:3000/api', {
+    fetch('http://localhost:3000/api', {
       'method': 'POST',
       'headers': {
         'Content-Type': 'application/json',
