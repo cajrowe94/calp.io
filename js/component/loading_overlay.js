@@ -52,7 +52,7 @@ component.loading_overlay.prototype.decorate = function(parent){
     'font-size': '13px',
   });
 
-  text.innerHTML = 'loading some stuff';
+  text.innerHTML = 'doing some things';
 
   loading_centerpiece.appendChild(text);
 

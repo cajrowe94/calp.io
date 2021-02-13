@@ -4,12 +4,9 @@ layer.sentence_generator = function(){
 $.inherits(layer.sentence_generator, layer);
 
 layer.sentence_generator.prototype.decorate = function(parent) {
-  new layer.canvas.grid({
-    'background': true,
-  }).render(parent);
-
   var self = this;
-  this.inputs_ = {};
+
+  this.inputs = {};
 
   var paper = new component.paper({
     'title': 'Sentence generator',
@@ -49,47 +46,46 @@ layer.sentence_generator.prototype.decorate = function(parent) {
     'border-radius': '10px',
     'height': '0px',
     'width': '100%',
-    'transition': 'height .2s, opacity .2s',
+    'transition': 'opacity .2s',
     'z-index': '9998',
     'text-align': 'center',
   });
 
   container.appendChild(sentence_container);
 
+  var alphabet = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+    'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+    'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+    'y', 'z',
+  ];
+
   paper_buttons.right.addEventListener('click', function() {
     // clear it out after each click
     sentence_container.innerHTML = '';
 
     css.apply(sentence_container, {
-      'height': '75px',
+      'min-height': '100%',
       'opacity': '100',
     });
 
     if (
-      self.inputs_ &&
-      (
-        self.inputs_.letter ||
-        self.inputs_.letter_random
-      )
+      self.inputs.letter ||
+      self.inputs.letter_random
     ) {
       new component.loading_overlay().render(sentence_container);
 
-      self.sentence = ['adjective', 'noun', 'verb', 'adjective', 'noun'];
+      self.sentence = ['adjective', 'noun', 'adverb', 'verb', 'adjective', 'noun'];
       var len = self.sentence.length;
       var i = 0;
-
-      var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-        'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
       var random_letter = alphabet[self.get_random_int(alphabet.length)];
 
       self.sentence.forEach(function(pos) {
-        var letter;
+        var letter = random_letter;
 
-        if (self.inputs_.letter_random) {
-          letter = random_letter;
-        } else {
-          letter = self.inputs_.letter.toLowerCase();
+        if (!self.inputs.letter_random) {
+          letter = self.inputs.letter.toLowerCase();
         }
 
         api(
@@ -99,8 +95,8 @@ layer.sentence_generator.prototype.decorate = function(parent) {
             'filter': {
               'letterPattern': '^' + letter,
               'partOfSpeech': pos,
-              // 'lettersMin': self.get_random_int(8) + 1,
-              'page': self.get_random_int(2) + 1,
+              'lettersMax': 10,
+              'limit': 500,
             },
           },
           function(res) {
@@ -120,7 +116,7 @@ layer.sentence_generator.prototype.decorate = function(parent) {
             }
 
             if (i === len) {
-              self.show_sentence_(sentence_container); // build a sentence
+              self.show_sentence(sentence_container);
             }
           }
         );
@@ -138,6 +134,14 @@ layer.sentence_generator.prototype.decorate = function(parent) {
     }
   });
 
+  this.decorate_inputs(container);
+
+  paper.render(parent);
+};
+
+layer.sentence_generator.prototype.decorate_inputs = function(parent){
+  var self = this;
+
   // letter input
   var letter = new component.input.text({
     'label': 'What letter?',
@@ -146,46 +150,44 @@ layer.sentence_generator.prototype.decorate = function(parent) {
         letter.value &&
         letter.value.length
       ) {
-        self.inputs_.letter = letter.value.charAt(0);
+        self.inputs.letter = letter.value.charAt(0);
       } else {
-        self.inputs_.letter = null;
+        self.inputs.letter = null;
       }
     },
   });
-  letter.render(container);
+  letter.render(parent);
 
   // random letter checkbox
   var letter_random = new component.input.check_box({
     'label': 'Random letter',
     'click': function() {
-      self.inputs_.letter_random = letter_random.checked;
+      self.inputs.letter_random = letter_random.checked;
     },
   });
-  letter_random.render(container);
+  letter_random.render(parent);
 
   // word length input
   var word_length = new component.input.text({
     'label': 'How many words?',
     'update': function() {
-      self.inputs_.word_length = word_length.value;
+      self.inputs.word_length = word_length.value;
     },
   });
-  // word_length.render(container);
+  // word_length.render(parent);
 
   // random word length input
   var word_length_random = new component.input.check_box({
     'label': 'Random word length',
     'click': function() {
-      self.inputs_.random_length = word_length_random.checked;
+      self.inputs.random_length = word_length_random.checked;
     },
   });
-  // word_length_random.render(container);
-
-  paper.render(parent);
+  // word_length_random.render(parent);
 };
 
-layer.sentence_generator.prototype.show_sentence_ = function(parent){
-  if (this.inputs_) {
+layer.sentence_generator.prototype.show_sentence = function(parent){
+  if (this.inputs) {
     parent.innerHTML = '';
     var sentence = document.createElement('p');
 
