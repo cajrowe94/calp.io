@@ -32,6 +32,7 @@ component.tile.prototype.decorate = function(parent) {
     'position': 'relative',
     'display': 'flex',
     'transition': 'transform .1s, top .1s',
+    'border': 'none',
   });
 
   // sleeve container
@@ -46,6 +47,7 @@ component.tile.prototype.decorate = function(parent) {
     css.apply(main_container, {
       'transform': 'rotate(1deg)',
       'top': '-5px',
+      'border': '1px solid ' + css.color('border_color'),
     });
   });
 
@@ -57,6 +59,7 @@ component.tile.prototype.decorate = function(parent) {
     css.apply(main_container, {
       'transform': 'rotate(0deg)',
       'top': '0px',
+      'border': 'none',
     });
   });
 

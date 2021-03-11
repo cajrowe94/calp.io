@@ -26,12 +26,12 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
     self.hide();
   });
 
-  var title = document.createElement('h2');
+  var title = document.createElement('h1');
   title.innerText = 'calp.io';
 
   css.apply(title, {
-    'color': css.color('background_secondary'),
     'width': 'fit-content',
+    'font-weight': '100',
     'transition': 'transform .1s',
   });
 
@@ -53,25 +53,13 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   email_contact.innerText = 'caleb@calp.io';
 
   css.apply(email_contact, {
-    'color': css.color('background_secondary'),
     'font-size': '13px',
-  });
-
-  // fancy trendy blobby blob
-  var blob = forge.make('blob', {});
-
-  css.apply(blob, {
-    'position': 'absolute',
-    'z-index': '-2',
-    'height': '500px',
-    'top': '-275px',
-    'left': '-170px',
+    'font-weight': '100',
   });
 
   anchor.appendChild(title);
   container.appendChild(anchor);
   container.appendChild(email_contact);
-  container.appendChild(blob);
 
   parent.appendChild(container);
 };

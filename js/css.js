@@ -60,6 +60,7 @@ css.prototype.color = function(color, opt_shade){
       '300': '#e1e1e1',
     },
     'error': '#CF6679',
+    'border_color': 'rgb(66 66 66)',
   };
 
   if (

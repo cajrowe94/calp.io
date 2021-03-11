@@ -36,6 +36,8 @@ component.navigation.prototype.decorate = function(parent) {
     'left': '0',
     'backgroundColor': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.3)',
+    'border': '1px solid ' + css.color('border_color'),
+    'border-top': '0px',
     'height': '50px',
     'width': '100%',
     'line-height': '75px',

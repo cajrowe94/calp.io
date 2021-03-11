@@ -22,12 +22,11 @@ component.list.prototype.decorate = function(parent) {
       'line-height': line_height,
       'cursor': 'pointer',
       'display': 'flex',
-      'width': '95%',
+      'width': '100%',
       'margin': '0 auto',
-      'padding': '10px',
-      'transition': 'background .3s, border .3s',
-      'border-radius': '0px 5px 5px 0px',
-      'border-left': '3px solid transparent',
+      'padding': '10px 10px 10px 20px',
+      'transition': 'background .3s, border .2s',
+      'border': '1px solid transparent',
     });
 
 
@@ -73,15 +72,17 @@ component.list.prototype.decorate = function(parent) {
 
     container.addEventListener('mouseenter', function(){
       css.apply(container, {
-        'background': css.color('secondary_focus'),
-        'border-left': '3px solid ' + css.color('secondary'),
+        'background': 'rgba(31, 40, 51, 0.6)',
+        'border': '1px solid ' + css.color('border_color'),
+        'border-left': '1px solid transparent',
+        'border-right': '1px solid transparent',
       });
     });
 
     container.addEventListener('mouseleave', function(){
       css.apply(container, {
         'background': css.color('background_secondary'),
-        'border-left': '3px solid transparent',
+        'border': '1px solid transparent',
       });
     });
 

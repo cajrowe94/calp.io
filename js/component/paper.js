@@ -107,6 +107,7 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'padding': '20px',
     'position': 'relative',
     'overflow': 'hidden',
+    'border': '1px solid ' + css.color('border_color'),
   });
 };
 
