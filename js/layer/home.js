@@ -5,10 +5,6 @@ $.inherits(layer.home, layer);
 
 layer.home.prototype.decorate = function(parent) {
   // decorate tiles
-  new layer.canvas.grid({
-    'background': true,
-  }).render(parent);
-
   this.decorate_links(parent);
   this.decorate_blocks(parent);
   this.decorate_extra(parent);

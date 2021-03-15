@@ -9,7 +9,14 @@
 html {
   min-width: 350px;
   overflow: hidden;
-  background-color: #0B0C10;
+  background: url('img/background.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+main {
+  background-color: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(7px)
 }
 
 .layer::-webkit-scrollbar {

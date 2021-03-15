@@ -16,7 +16,6 @@ layer.prototype.render = function(opt_parent){
     this.set_class(root);
 
     css.apply(root, {
-      'background-color': 'transparent',
       'height': '100vh',
       'width': '100%',
       'padding': '60px 20px 250px 20px',

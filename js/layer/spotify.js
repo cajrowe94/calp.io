@@ -8,10 +8,6 @@ layer.spotify.prototype.get_title = function(parent) {
 };
 
 layer.spotify.prototype.decorate = function(parent) {
-  new layer.canvas.grid({
-    'background': true,
-  }).render(parent);
-
   var description = document.createElement('p');
 
   description.innerHTML = 'I downloaded the past year of my Spotify streaming' +
