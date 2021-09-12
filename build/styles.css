@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+}
+
+html {
+  min-width: 350px;
+  overflow: hidden;
+  background: #0a0b0c;
+}
+
+.layer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+h1 {
+  font-size: 2.625rem;
+  font-weight: 300;
+}
+@media screen and (max-width: 44.9375rem) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+@media screen and (max-width: 44.9375rem) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+@media screen and (max-width: 44.9375rem) {
+  h3 {
+    font-size: 1.375rem;
+  }
+}
+
+h4 {
+  font-size: 1.375rem;
+  font-weight: normal;
+}
+@media screen and (max-width: 44.9375rem) {
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+
+.button {
+  outline: none;
+  color: #76ffff;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 15px;
+  border: 1px solid #76ffff;
+  background: transparent;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.button.fill {
+  color: #ffffff;
+  background: #2070E9;
+  border: transparent;
+}
+
+.button.text {
+  color: #ffffff;
+  border: 1px transparent;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+.tile-main-container {
+  height: 8.125rem;
+  width: 100%;
+  background: #16181c;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0);
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+  display: flex;
+  transition: transform 0.1s, top 0.2s, right 0.2s, box-shadow 0.2s;
+  border: 0.0625rem solid #0a0b0c;
+  top: 0;
+  right: 0;
+}
+.tile-main-container .tile-sleeve {
+  opacity: 1;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  display: flex;
+  line-height: 8.125rem;
+  position: absolute;
+  transition: opacity 0.1s ease-in-out;
+  opacity: 100;
+}
+.tile-main-container .tile-sleeve .sleeve-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: linear-gradient(to right, #121212, rgba(18, 18, 18, 0.3));
+}
+.tile-main-container:hover {
+  top: -0.625rem;
+  right: -0.625rem;
+  box-shadow: -0.625rem 0.5rem 0px #2070E9;
+  border: 0.0625rem solid #2070E9;
+}
+.tile-main-container:hover .tile-sleeve {
+  opacity: 0;
+}
+
+/*# sourceMappingURL=styles.css.map */
