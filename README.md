@@ -10,6 +10,6 @@ which I will agree with you, but I just wanted to see if I could do it :)
 
 Doing this with vanilla js will hopefully give me a better understanding of how modern front-end frameworks work and maybe a better appreciation for what they can do.
 
-Thanks for checking it out! calp.io
+Thanks for checking it out! calp.io 
 
 
