@@ -1,0 +1,27 @@
+@use 'sass:math';
+
+// colors
+$white: #FFFFFF;
+$black: #000000;
+$eerie-black-dark: #0a0b0c;
+$eerie-black-dark-alpha: rgba(10, 11, 12, 0.8);
+$eerie-black: #16181c;
+$eerie-black-alpha: rgba(22, 24, 28, 0.6);
+$blue-crayola: #2070E9;
+
+// breakpoints
+// https://gist.github.com/nurbek-ab/efc407ec15f77b56c8cb9cff6787802a
+$for-phone: "screen and (max-width: 44.9375rem)"; // < 720
+$for-tablet-only: "screen and (min-width: 45rem) and (max-width: 74.9375rem)"; // > 720 < 1199
+$for-tablet-portrait-only: "screen and (min-width: 45rem) and (max-width: 56.1875rem)"; // > 720 < 900
+$for-tablet-portrait-up: "screen and (min-width: 45rem)"; // > 720
+$for-tablet-landscape-up: "screen and (min-width: 56.25rem)"; // > 900
+$for-desktop-up: "screen and (min-width: 75rem)"; // > 1200
+$for-big-desktop-up: "screen and (min-width: 112.5rem)"; // > 1800
+
+
+// functions
+@function toRem($value) {
+    $remValue: (math.div($value, 16)) + rem; 
+    @return $remValue;
+}

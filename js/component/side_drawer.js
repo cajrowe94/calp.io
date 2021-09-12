@@ -60,7 +60,7 @@ component.side_drawer.prototype.decorate = function(parent) {
     'border-radius': '50%',
     'background': 'transparent',
     'padding': '3px',
-    'transition': 'background .3s',
+    'transition': 'background .2s',
   });
 
   close_icon.addEventListener('mouseover', function() {
@@ -104,8 +104,6 @@ component.side_drawer.prototype.set_default_styles_ = function(container) {
     'flex-direction': 'column',
     'position': 'fixed',
     'border-radius': '0px 10px 10px 0px',
-    'border': '1px solid ' + css.color('border_color'),
-    'border-left': '0px',
     'top': '0px',
     'left': this.get_side() === 'left' ? '-' + this.drawer_width_ + 'px' : null,
     'right': this.get_side() === 'right' ? '-' + this.drawer_width_ + 'px' : null,

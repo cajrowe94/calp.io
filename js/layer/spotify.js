@@ -15,8 +15,8 @@ layer.spotify.prototype.decorate = function(parent) {
     'They give you giant json files, and each file has an array of \'streams\'. ' +
     'Each stream object has the artist name, track name, date/time listened, and milliseconds played. ' +
     'So with this I was able to get my top artists, along with my favorite songs from ' +
-    'those artists! With the charts I can easily see when I obsessed over certain tracks. :)' +
-    '\nI used Highcharts.js to build the charts. It\'s a super awesome library.';
+    'those artists! With the charts I can easily see when I obsessed over certain tracks.' +
+    '\nHighcharts.js was used to build the charts.';
 
   parent.appendChild(description);
 

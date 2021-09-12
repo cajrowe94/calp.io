@@ -2,21 +2,14 @@
   margin:0; 
   padding:0; 
   box-sizing:border-box; 
-  font-family: 'Roboto Mono', monospace;
-  color: #C5C6C7;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
 }
 
 html {
   min-width: 350px;
   overflow: hidden;
-  background: url('img/background.jpg');
-  background-position: center;
-  background-size: cover;
-}
-
-main {
-  background-color: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(7px)
+  background: #0a0b0c;
 }
 
 .layer::-webkit-scrollbar {
@@ -24,19 +17,42 @@ main {
   height: 0;
 }
 
+// headings
+
 h1 {
-  font-size: 32px;
-  font-weight: 400;
+	font-size: toRem(42);
+	font-weight: 300;
+
+	@media #{$for-phone} {
+		font-size: toRem(28); 
+	}
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 300;
+	font-size: toRem(36);
+	font-weight: 300;
+
+	@media #{$for-phone} {
+		font-size: toRem(24); 
+	}
 }
 
 h3 {
-  font-size: 20px;
-  font-weight: 200;
+	font-size: toRem(24);
+	font-weight: 300;
+
+	@media #{$for-phone} {
+		font-size: toRem(22); 
+	}
+}
+
+h4 {
+	font-size: toRem(22);
+	font-weight: normal;
+
+	@media #{$for-phone} {
+		font-size: toRem(20); 
+	}
 }
 
 .button {
@@ -49,18 +65,18 @@ h3 {
   background: transparent;
   cursor: pointer;
   margin: 5px;
-  border-radius: 7px;
+  border-radius: 4px;
   text-transform: uppercase;
 }
 
 .button.fill {
-  color: #102027;
-  background: rgba(24, 255, 255, .8);
+  color: #ffffff;
+  background: #2070E9;
   border: transparent;
 }
 
 .button.text {
-  color: #76ffff;
+  color: #ffffff;
   border: 1px transparent;
 }
 

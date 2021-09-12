@@ -35,7 +35,9 @@ css.prototype.color = function(color, opt_shade){
     'background_secondary_alpha': theme.background_secondary_alpha,
     'background_alpha': theme.background_alpha,
     'secondary': theme.secondary,
-    'secondary_focus': 'rgba(0, 227, 227, 0.1)',
+    'secondary_focus': 'rgba(32, 112, 233, 0.2)',
+    'eerie_black': '#16181c',
+    'blue_crayola': '#2070E9',
     'gray': {
       '100': '#484848',
       '200': '#212121',
@@ -60,7 +62,7 @@ css.prototype.color = function(color, opt_shade){
       '300': '#e1e1e1',
     },
     'error': '#CF6679',
-    'border_color': 'rgb(66 66 66)',
+    'border_color': 'rgb(66, 66, 66)',
   };
 
   if (
@@ -84,10 +86,10 @@ css.prototype.get_theme = function(theme){
       'primary': '#0B0C10',
       'secondary': '#18ffff',
       'tertiary': '#F27D42',
-      'background': '#0B0C10',
-      'background_alpha': 'rgba(18, 18, 18, 0.6)',
-      'background_secondary': '#1F2833',
-      'background_secondary_alpha': 'rgba(31, 40, 51, 0.6)',
+      'background': '#0a0b0c',
+      'background_alpha': 'rgba(10, 11, 12, 0.8)',
+      'background_secondary': '#16181c',
+      'background_secondary_alpha': 'rgba(22, 24, 28, 0.6)',
     },
     'forest': {
       'primary': '#363030',

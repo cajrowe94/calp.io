@@ -103,11 +103,11 @@ component.paper.prototype.apply_paper_styles_ = function(container){
     'background': css.color('background_secondary'),
     'box-shadow': '0px 2px 8px rgba(0,0,0,0.6)',
     'min-height': '100px',
-    'border-radius': '7px',
+    // 'border-radius': '7px',
     'padding': '20px',
     'position': 'relative',
     'overflow': 'hidden',
-    'border': '1px solid ' + css.color('border_color'),
+    // 'border': '1px solid ' + css.color('border_color'),
   });
 };
 

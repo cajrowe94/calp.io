@@ -9,7 +9,7 @@ var callback = function(){
     window.data = {};
   }
   // instantiate default components and layers
-  (new component.terminal().render(document.getElementsByTagName('body')[0]));
+  // (new component.terminal().render(document.getElementsByTagName('body')[0]));
 
   (new component.navigation()
     .render(document.getElementsByTagName('nav')[0])

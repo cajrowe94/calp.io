@@ -40,8 +40,8 @@ component.grid.prototype.init = function() {
   css.apply(grid_container, {
     // 'overflow': 'hidden',
     'display': 'grid',
-    // 'column-gap': '10px',
-    // 'row-gap': '10px',
+    'column-gap': '10px',
+    'row-gap': '10px',
     'grid-template-columns': 'repeat(' +
       (this.settings_.columns || 'auto-fit') +
       ', minmax(' + (this.settings_.min_width || '350px') + ', 1fr))',

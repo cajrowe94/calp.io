@@ -17,51 +17,13 @@ component.tile.prototype.decorate = function(parent) {
   var self = this;
   // main container for the tile
   var main_container = document.createElement('div');
-  var height = '130px';
+  main_container.classList.add('tile-main-container');
 
   this.set_click_event_(main_container);
 
-  css.apply(main_container, {
-    'height': height,
-    'width': '100%',
-    'background': css.color('background_secondary'),
-    'border-radius': '10px',
-    'box-shadow': '0px 2px 8px rgba(0,0,0,0)',
-    'cursor': 'pointer',
-    'z-index': '10',
-    'position': 'relative',
-    'display': 'flex',
-    'transition': 'transform .1s, top .1s',
-    'border': 'none',
-  });
-
   // sleeve container
   var sleeve_container = document.createElement('div');
-
-  // hover effects
-  main_container.addEventListener('mouseover', function() {
-    css.apply(sleeve_container, {
-      'opacity': '0',
-    });
-
-    css.apply(main_container, {
-      'transform': 'rotate(1deg)',
-      'top': '-5px',
-      'border': '1px solid ' + css.color('border_color'),
-    });
-  });
-
-  main_container.addEventListener('mouseleave', function() {
-    css.apply(sleeve_container, {
-      'opacity': '100',
-    });
-
-    css.apply(main_container, {
-      'transform': 'rotate(0deg)',
-      'top': '0px',
-      'border': 'none',
-    });
-  });
+  sleeve_container.classList.add('tile-sleeve');
 
   var sleeve_background = {};
 
@@ -71,16 +33,7 @@ component.tile.prototype.decorate = function(parent) {
     this.options_ &&
     this.options_.sleeve_image
   ) {
-    css.apply(overlay, {
-      'position': 'absolute',
-      'top': '0',
-      'left': '0',
-      'width': '100%',
-      'height': '100%',
-      'z-index': '-1',
-      'background-image': 'linear-gradient(to right, rgba(18,18,18,1), rgba(18,18,18,0.3))',
-    });
-
+    overlay.classList.add('sleeve-image-overlay');
     sleeve_container.appendChild(overlay);
 
     sleeve_background['background-image'] = 'url("' + this.options_.sleeve_image + '")';
@@ -95,20 +48,7 @@ component.tile.prototype.decorate = function(parent) {
     sleeve_background['backdrop-filter'] = 'blur(7px)';
   }
 
-  css.apply(sleeve_container, $.extend({
-    'z-index': '10',
-    'height': '100%',
-    // 'border-radius': '10px',
-    'width': '100%',
-    'top': '0',
-    'right': '0',
-    'display': 'flex',
-    'line-height': height,
-    'position': 'absolute',
-    'transition': 'opacity .2s ease-in-out',
-    // 'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
-    'opacity': '100',
-  }, sleeve_background));
+  css.apply(sleeve_container, sleeve_background);
 
   main_container.appendChild(sleeve_container);
 
@@ -150,7 +90,6 @@ component.tile.prototype.decorate = function(parent) {
 
     css.apply(text, {
       'margin': '10px 5px',
-      'border-left': '2px solid ' + css.color('secondary'),
       'padding': '18px 10px 10px 10px',
     });
 
@@ -163,14 +102,12 @@ component.tile.prototype.decorate = function(parent) {
     this.options_ &&
     this.options_.title
   ) {
-    var title = document.createElement('h3');
+    var title = document.createElement('h4');
     title.innerText = this.options_.title;
 
     css.apply(title, {
       'padding-left': '10px',
       'overflow': 'hidden',
-      'font-weight': '300',
-      'color': this.options_.title_color,
     });
 
     sleeve_container.appendChild(title);

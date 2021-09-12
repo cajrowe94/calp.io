@@ -79,10 +79,12 @@ layer.prototype.get_class = function() {
 };
 
 layer.prototype.set_class = function(container) {
+  var classes = this.get_class();
+
   // clear and add new class
   container.removeAttribute('class');
 
-  this.get_class().forEach(function(class_name){
+  classes.forEach(function(class_name){
     container.classList.add(class_name);
   });
 };

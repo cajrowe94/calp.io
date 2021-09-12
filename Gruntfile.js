@@ -3,6 +3,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   // project config
   grunt.initConfig({
@@ -11,12 +13,15 @@ module.exports = function(grunt) {
       'files': [
         'index.html',
         'style.css',
+        'scss/*.scss',
+        'scss/**/*.scss',
         '*.js',
         'js/*.js',
         'js/**/*.js',
         'js/**/**/*.js',
+
       ],
-      'tasks': ['concat', 'uglify'],
+      'tasks': ['sass', 'cssmin', 'concat', 'uglify'],
     },
     'concat': {
       'dist': {
@@ -34,7 +39,15 @@ module.exports = function(grunt) {
           'js/component/*.js',
           'js/component/**/*.js',
         ],
-        'dest': 'build/concat.js',
+        'dest': 'build/js.js',
+      },
+    },
+    'sass': {
+      'dist': {
+        'src': [
+          'scss/import.scss'
+        ],
+        'dest': 'build/styles.css',
       },
     },
     'uglify': {
@@ -42,21 +55,32 @@ module.exports = function(grunt) {
         'banner': '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
       },
       'build': {
-        'src': 'build/concat.js',
-        'dest': 'build/concat.min.js',
+        'src': 'build/js.js',
+        'dest': 'build/js.min.js',
       },
     },
+    'cssmin': {
+      'options': {
+        'mergeIntoShorthands': false,
+        'roundingPrecision': -1
+      },
+      'target': {
+        'files': {
+          'build/styles.min.css': ['build/styles.css']
+        }
+      }
+    }
   });
 
   // tasks for dev, production, and default
   // default, just concats
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['sass', 'cssmin', 'concat']);
 
   // grunt dev doesnt minimize, just concat and watch
-  grunt.registerTask('dev', ['concat', 'uglify', 'watch']);
+  grunt.registerTask('dev', ['sass', 'cssmin', 'concat', 'uglify', 'watch']);
 
   // prod concats and minimizes, no watching
   // todo prod needs to delete concat.js
   // also will need to somehow switch which js file my index.html calls
-  grunt.registerTask('prod', ['concat', 'uglify']);
+  grunt.registerTask('prod', ['sass', 'cssmin', 'concat', 'uglify']);
 };
