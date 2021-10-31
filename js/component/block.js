@@ -59,29 +59,7 @@ component.block.prototype.add_link = function(parent) {
     'right': '0',
     'padding': '15px',
     'background-color': css.color('background_secondary'),
-    'box-shadow': '0px 2px 8px rgba(0,0,0,0)',
-    'transition': 'transform .2s, bottom .2s, box-shadow .2s',
   });
-
-  // hover effects
-  link_text.addEventListener('mouseover', function() {
-    css.apply(link_text, {
-      'transform': 'rotate(1deg)',
-      'bottom': '2px',
-      'text-decoration': 'none',
-      'box-shadow': '-2px 0px 7px rgba(0,0,0, 0.8)',
-    });
-  });
-
-  link_text.addEventListener('mouseleave', function() {
-    css.apply(link_text, {
-      'transform': 'rotate(0deg)',
-      'bottom': '0px',
-      'text-decoration': 'underline',
-      'box-shadow': '0px 2px 8px rgba(0,0,0,0)',
-    });
-  });
-
 
   parent.appendChild(link_text);
 };

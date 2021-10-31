@@ -34,15 +34,11 @@ component.navigation.prototype.decorate = function(parent) {
     'position': 'fixed',
     'top': '0',
     'left': '0',
-    // 'backgroundColor': css.color('background_secondary'),
-    // 'box-shadow': '0px 2px 8px rgba(0,0,0,0.3)',
-    // 'border': '1px solid ' + css.color('border_color'),
     'border-top': '0px',
     'height': '50px',
     'width': '100%',
     'line-height': '75px',
     'z-index': '200',
-    // 'border-radius': '0px 0px 10px 10px',
   });
 
   var title = document.createElement('h1');

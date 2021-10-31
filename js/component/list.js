@@ -95,3 +95,7 @@ component.list.prototype.set_contents = function(list) {
 component.list.prototype.get_contents_ = function() {
   return this.list_;
 };
+
+component.list.prototype.get_class = function() {
+  return ['component', 'list'];
+};

@@ -16,6 +16,8 @@ var callback = function(){
   );
 
   (new layer.home().render());
+
+  new layer.particles().render(document.getElementsByTagName('body')[0]);
 };
 
 if (

@@ -12,6 +12,7 @@ $.inherits(component.side_drawer.navigation, component.side_drawer);
 component.side_drawer.navigation.prototype.decorate_header = function(parent){
   var self = this;
   var container = document.createElement('div');
+  container.classList.add('side-nav-header');
 
   css.apply(container, {
     'padding': '0px 10px',
@@ -29,33 +30,14 @@ component.side_drawer.navigation.prototype.decorate_header = function(parent){
   var title = document.createElement('h1');
   title.innerText = 'calp.io';
 
-  css.apply(title, {
-    'width': 'fit-content',
-    'font-weight': '100',
-    'transition': 'transform .1s',
-  });
-
-  // hover effects
-  title.addEventListener('mouseover', function() {
-    css.apply(title, {
-      'transform': 'rotate(2deg)',
-    });
-  });
-
-  title.addEventListener('mouseleave', function() {
-    css.apply(title, {
-      'transform': 'rotate(0deg)',
-    });
-  });
-
   // email contact
-  var email_contact = document.createElement('p');
+  var email_contact = document.createElement('a');
   email_contact.innerText = 'caleb@calp.io';
 
-  css.apply(email_contact, {
-    'font-size': '13px',
-    'font-weight': '100',
-  });
+  email_contact.classList.add('email-link');
+
+  email_contact.setAttribute('href', 'mailto:caleb@calp.io');
+  email_contact.setAttribute('target', '_blank');
 
   anchor.appendChild(title);
   container.appendChild(anchor);
@@ -78,6 +60,14 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       }),
     },
     {
+      'name': 'Scrapyard',
+      'icon': 'bug',
+      'action': (function() {
+        self.hide();
+        new layer.scrapyard().render();
+      }),
+    },
+    {
       'name': 'Blog',
       'icon': 'dashboard',
       'action': (function() {
@@ -92,31 +82,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
         self.hide();
         new layer.about().render();
       }),
-    },
-    {
-      'name': 'Sentence Generator',
-      'icon': 'message',
-      'action': (function() {
-        self.hide();
-        new layer.sentence_generator().render();
-      }),
-    },
-    {
-      'name': 'Canvas',
-      'icon': 'brush',
-      'action': (function() {
-        self.hide();
-        new layer.canvas.collisions().render();
-      }),
-    },
-    {
-      'name': 'Spotify streams',
-      'icon': 'bar_chart',
-      'action': (function() {
-        self.hide();
-        new layer.spotify().render();
-      }),
-    },
+    }
   ];
 
   nav_list.set_contents(list_contents);
