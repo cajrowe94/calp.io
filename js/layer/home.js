@@ -49,7 +49,7 @@ layer.home.prototype.decorate_links = function(parent){
     'title': 'About',
     'icon': 'person',
     'text': 'So what does calp mean?',
-    'sleeve_image': 'img/tiles/about_tile_2.jpg',
+    'sleeve_image': 'img/tiles/about_tile.jpg',
     'click': function() {
       new layer.about().render();
     },
