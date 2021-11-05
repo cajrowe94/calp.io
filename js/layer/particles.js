@@ -16,6 +16,7 @@ layer.particles.prototype.decorate = function(parent) {
     'overflow': 'hidden',
     'height': '100%',
     'width': '100%',
+    'z-index': '-1'
   });
 
   parent.appendChild(container);

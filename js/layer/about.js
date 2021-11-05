@@ -21,7 +21,7 @@ layer.about.prototype.decorate = function(parent) {
     'height': 'auto',
   });
 
-  container.appendChild(about_image);
+  // container.appendChild(about_image);
 
   var intro = document.createElement('p');
 
@@ -55,10 +55,6 @@ layer.about.prototype.decorate = function(parent) {
 };
 
 layer.about.prototype.get_title = function() {
-  return 'About me';
-};
-
-layer.about.prototype.get_sub_title = function() {
   return 'Who\'s Calp?';
 };
 

@@ -68,15 +68,7 @@ component.side_drawer.navigation.prototype.decorate_body = function(parent){
       }),
     },
     {
-      'name': 'Blog',
-      'icon': 'dashboard',
-      'action': (function() {
-        self.hide();
-        new layer.blog_home().render();
-      }),
-    },
-    {
-      'name': 'About',
+      'name': 'Yours truly',
       'icon': 'person',
       'action': (function() {
         self.hide();
@@ -127,6 +119,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   css.apply(linkedin_icon, {
     'height': '38px',
     'cursor': 'pointer',
+    'margin-top': '3px',
   });
 
   linkedin_icon.addEventListener('click', function() {
@@ -145,6 +138,7 @@ component.side_drawer.navigation.prototype.decorate_footer = function(parent){
   css.apply(youtube_icon, {
     'height': '38px',
     'cursor': 'pointer',
+    'margin-top': '3px',
   });
 
   youtube_icon.addEventListener('click', function() {

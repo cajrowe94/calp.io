@@ -24,7 +24,7 @@ layer.home.prototype.decorate_links = function(parent){
   var projects_tile = new component.tile({
     'title': 'Projects',
     'icon': 'rocket',
-    'text': 'Collection of all my projects I have done through the years.',
+    'text': 'Collection of projects and work I have completed.',
     'sleeve_image': 'img/tiles/cosmos_tile.png',
     'click': function() {
       new layer.projects().render();
@@ -33,23 +33,23 @@ layer.home.prototype.decorate_links = function(parent){
 
   grid.add_cell(projects_tile);
 
-  var blog_tile = new component.tile({
-    'title': 'Blog',
-    'icon': 'dashboard',
-    'text': 'I write about traveling, electronics, and development.',
-    'sleeve_image': 'img/tiles/zion_tile.jpg',
+  var scrapyard_tile = new component.tile({
+    'title': 'Scrapyard',
+    'icon': 'bug',
+    'text': 'The archives.',
+    'sleeve_image': 'img/tiles/perlin_noise_tile.png',
     'click': function() {
-      new layer.blog_home().render();
+      new layer.scrapyard().render();
     },
   });
 
-  grid.add_cell(blog_tile);
+  grid.add_cell(scrapyard_tile);
 
   var about_tile = new component.tile({
     'title': 'About',
     'icon': 'person',
-    'text': 'The heck does calp mean?',
-    'sleeve_image': 'img/about/about_page_1.jpg',
+    'text': 'So what does calp mean?',
+    'sleeve_image': 'img/tiles/about_tile_2.jpg',
     'click': function() {
       new layer.about().render();
     },
