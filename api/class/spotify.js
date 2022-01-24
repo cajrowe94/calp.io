@@ -9,16 +9,6 @@ const SPOTIFY_CLIENT_ID = config.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET = config.SPOTIFY_CLIENT_SECRET;
 // const SPOTIFY_URI = config.SPOTIFY_URI;
 
-// /** Init conn to mongo DB */
-
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = SPOTIFY_URI;
-
-// const client = new MongoClient(uri, {
-//   'useNewUrlParser': true,
-//   'useUnifiedTopology': true,
-// });
-
 class Spotify {
   constructor(request, client) {
     this.request_ = request;
@@ -63,10 +53,38 @@ class Spotify {
    * }
    *
    */
-  async read_streams() {
+  async read_2020_streams() {
     // init conn to db and collection
     const db = this.client.db('Spotify');
     let collection = db.collection('stream');
+
+    // get a query
+    let request = this.get_request();
+    let query = request.parameters;
+
+    try {
+      let documents = [];
+
+      await collection.find(
+        query ? query : {}
+      )
+        .sort({'endTime': 1})
+        .toArray()
+        .then(items => {
+          documents = items;
+        });
+
+      return documents;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  // just bein lazy for now and duplicating the function
+  async read_2021_streams() {
+    // init conn to db and collection
+    const db = this.client.db('Spotify');
+    let collection = db.collection('stream2');
 
     // get a query
     let request = this.get_request();

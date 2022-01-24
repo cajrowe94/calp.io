@@ -89,17 +89,28 @@ layer.home.prototype.decorate_blocks = function(parent){
 layer.home.prototype.decorate_extra = function(parent){
   var grid = new component.grid();
 
-  var spotify_tile = new component.tile({
+  var spotify_2020_tile = new component.tile({
     'title': '2020 Spotify stream data',
     'icon': 'bar_chart',
     'text': 'I downloaded my 2020 Spotify stream data and made some cool charts.',
     'sleeve_image': 'img/tiles/spotify_tile.png',
     'click': function() {
-      new layer.spotify().render();
+      new layer.spotify_2020().render();
     },
   });
 
-  grid.add_cell(spotify_tile);
+  var spotify_2021_tile = new component.tile({
+    'title': '2021 Spotify stream data',
+    'icon': 'bar_chart',
+    'text': 'I downloaded my 2021 Spotify stream data and made some more cool charts.',
+    'sleeve_image': 'img/tiles/spotify_tile.png',
+    'click': function() {
+      new layer.spotify_2021().render();
+    },
+  });
+
+  grid.add_cell(spotify_2020_tile);
+  grid.add_cell(spotify_2021_tile);
 
   grid.render(parent);
 };

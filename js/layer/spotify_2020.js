@@ -1,52 +1,40 @@
-layer.spotify = function(){
+layer.spotify_2020 = function(){
   layer.apply(this, arguments);
 };
-$.inherits(layer.spotify, layer);
+$.inherits(layer.spotify_2020, layer);
 
-layer.spotify.prototype.get_title = function(parent) {
+layer.spotify_2020.prototype.get_title = function(parent) {
   return '2020 Spotify stream data';
 };
 
-layer.spotify.prototype.decorate = function(parent) {
-  var description = document.createElement('p');
-
-  description.innerHTML = 'I downloaded the past year of my Spotify streaming' +
-    ' history to see my top artists and songs. ' +
-    'They give you giant json files, and each file has an array of \'streams\'. ' +
-    'Each stream object has the artist name, track name, date/time listened, and milliseconds played. ' +
-    'So with this I was able to get my top artists, along with my favorite songs from ' +
-    'those artists! With the charts I can easily see when I obsessed over certain tracks.' +
-    '\nHighcharts.js was used to build the charts.';
-
-  parent.appendChild(description);
-
+layer.spotify_2020.prototype.decorate = function(parent) {
   this.decorate_top_three_artists(parent);
 
   if (
     this.loading === false ||
-    window.data.spotify
+    window.data.spotify_2020
   ) {
     this.decorate_top_three_artists_songs(parent);
     // this.decorate_full_streaming_history(parent);
   }
 };
 
-layer.spotify.prototype.get_spotify_data = function() {
+layer.spotify_2020.prototype.get_spotify_data = function() {
   var self = this;
 
   api(
     'spotify',
-    'read_streams',
+    'read_2020_streams',
     {},
     function(data) {
       self.loading = false;
-      window.data.spotify = data;
+      window.data.spotify_2020 = data;
       self.render();
     }
   );
 };
 
-layer.spotify.prototype.format_time = function(seconds) {
+layer.spotify_2020.prototype.format_time = function(seconds) {
   var data = {};
   var minutes = (seconds / 60).toFixed(2);
 
@@ -56,7 +44,7 @@ layer.spotify.prototype.format_time = function(seconds) {
   return data;
 };
 
-layer.spotify.prototype.decorate_top_three_artists = function(parent) {
+layer.spotify_2020.prototype.decorate_top_three_artists = function(parent) {
   var paper = new component.paper({
     'title': 'Top 3 artists',
   });
@@ -75,7 +63,7 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
 
   if (
     this.loading === false ||
-    window.data.spotify
+    window.data.spotify_2020
   ) {
     var series_data = this.get_top_three_artists_series();
 
@@ -123,9 +111,9 @@ layer.spotify.prototype.decorate_top_three_artists = function(parent) {
   paper.render(parent);
 };
 
-layer.spotify.prototype.get_top_three_artists_series = function() {
+layer.spotify_2020.prototype.get_top_three_artists_series = function() {
   var return_data = {};
-  var streams_data = $.isArray(window.data.spotify) ? window.data.spotify : [];
+  var streams_data = $.isArray(window.data.spotify_2020) ? window.data.spotify_2020 : [];
 
   // all artists streamed
   var artists = [];
@@ -290,7 +278,7 @@ layer.spotify.prototype.get_top_three_artists_series = function() {
   return return_data;
 };
 
-layer.spotify.prototype.decorate_top_three_artists_songs = function(parent) {
+layer.spotify_2020.prototype.decorate_top_three_artists_songs = function(parent) {
   var self = this;
   var top_three = this.top_three_artists;
   var top_songs = this.get_top_three_songs();
@@ -303,7 +291,7 @@ layer.spotify.prototype.decorate_top_three_artists_songs = function(parent) {
   });
 };
 
-layer.spotify.prototype.decorate_top_songs_paper = function(artist, top_songs, place, parent) {
+layer.spotify_2020.prototype.decorate_top_songs_paper = function(artist, top_songs, place, parent) {
   var paper = new component.paper({
     'title': '#' + place + ' ' + artist.artist + ' - Top 3 songs',
   });
@@ -360,7 +348,7 @@ layer.spotify.prototype.decorate_top_songs_paper = function(artist, top_songs, p
   paper.render(parent);
 };
 
-layer.spotify.prototype.get_top_three_songs = function() {
+layer.spotify_2020.prototype.get_top_three_songs = function() {
   var self = this;
   var artists = $.clone(this.top_three_artists);
   var all_streams = $.clone(this.all_streams);
@@ -435,7 +423,7 @@ layer.spotify.prototype.get_top_three_songs = function() {
   return song_totals;
 };
 
-layer.spotify.prototype.get_top_three_song_series = function(top_three) {
+layer.spotify_2020.prototype.get_top_three_song_series = function(top_three) {
   var series = [];
 
   // build out the daily series for top three songs
@@ -554,7 +542,7 @@ layer.spotify.prototype.get_top_three_song_series = function(top_three) {
 
 /*
 // not really a fan of this
-layer.spotify.prototype.decorate_full_streaming_history = function(parent) {
+layer.spotify_2020.prototype.decorate_full_streaming_history = function(parent) {
   var self = this;
 
   var paper = new component.paper({
